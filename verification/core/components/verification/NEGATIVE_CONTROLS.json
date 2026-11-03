@@ -1,0 +1,52 @@
+{
+  "check_components.py": [
+    {
+      "name": "duplicate-key",
+      "stderr": "FAIL: duplicate JSON key\n"
+    },
+    {
+      "name": "float",
+      "stderr": "FAIL: non-integer JSON number\n"
+    },
+    {
+      "name": "boolean-dimension",
+      "stderr": "FAIL: dimension range\n"
+    },
+    {
+      "name": "zero-denominator",
+      "stderr": "FAIL: noncanonical rational\n"
+    },
+    {
+      "name": "unknown-field",
+      "stderr": "FAIL: top-level fields\n"
+    },
+    {
+      "name": "bad-shape",
+      "stderr": "FAIL: tensor shape\n"
+    },
+    {
+      "name": "zero-coupling",
+      "stderr": "FAIL: zero coupling is excluded\n"
+    },
+    {
+      "name": "omitted-two-images",
+      "stderr": "FAIL: compatibility kernel is not scalar\n"
+    },
+    {
+      "name": "damaged-coefficient",
+      "stderr": "FAIL: tensor coefficient mismatch\n"
+    },
+    {
+      "name": "threshold-premise",
+      "stderr": "FAIL: speedup premise R>2N\n"
+    },
+    {
+      "name": "threshold-swapped-radicals",
+      "stderr": "FAIL: threshold interval does not imply n<B_n<n+1\n"
+    },
+    {
+      "name": "boundary-rank-four",
+      "stderr": "FAIL: boundary flattening exceeds three\n"
+    }
+  ]
+}

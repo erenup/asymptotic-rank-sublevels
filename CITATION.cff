@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript using the preferred citation below."
+type: software
+title: "Asymptotic Tensor-Rank Sublevels Need Not Be Irreducible"
+authors:
+  - given-names: "Wenqi"
+    family-names: "Zhu"
+    affiliation: "Mathematical Institute, Woodstock Road, University of Oxford, Oxford, UK, OX2 6GG"
+    email: "wenqi.zhu@maths.ox.ac.uk"
+  - given-names: "Qiyuan"
+    family-names: "Chen"
+    affiliation: "Academy of Mathematics and Systems Science, Chinese Academy of Sciences, Beijing, China"
+  - given-names: "Ping"
+    family-names: "Nie"
+    affiliation: "David R. Cheriton School of Computer Science, University of Waterloo"
+    email: "ping.nie@uwaterloo.ca"
+license: MIT
+repository-code: "https://github.com/erenup/asymptotic-rank-sublevels"
+abstract: >-
+  Over the complex numbers, the set of tensors of asymptotic rank at most
+  the cube root of 62 in format (3,3,3,2) is reducible in the Zariski
+  topology. This answers the irreducibility assertion over all tensor
+  orders negatively; the order-three question remains open. More
+  generally, for every order k >= 4 with all factor dimensions at least
+  two, every n >= 3 and every threshold a
+  with B_n <= a < n+1, where n < B_n < n+1 is explicit, the sublevel has
+  at least binomial(t_n,3)+1 irreducible components, with t_n the number
+  of factors of dimension at least n.
+  Includes the paper, plain-text proofs, exact supporting
+  checks, and a Lean proof of the finite certificate layer. Files outside
+  paper/ are licensed under MIT; files in paper/, including the manuscript
+  source and PDF, are licensed under CC BY-SA 4.0.
+preferred-citation:
+  type: unpublished
+  license: CC-BY-SA-4.0
+  title: "Asymptotic Tensor-Rank Sublevels Need Not Be Irreducible"
+  authors:
+    - given-names: "Wenqi"
+      family-names: "Zhu"
+      affiliation: "Mathematical Institute, Woodstock Road, University of Oxford, Oxford, UK, OX2 6GG"
+      email: "wenqi.zhu@maths.ox.ac.uk"
+    - given-names: "Qiyuan"
+      family-names: "Chen"
+      affiliation: "Academy of Mathematics and Systems Science, Chinese Academy of Sciences, Beijing, China"
+    - given-names: "Ping"
+      family-names: "Nie"
+      affiliation: "David R. Cheriton School of Computer Science, University of Waterloo"
+      email: "ping.nie@uwaterloo.ca"

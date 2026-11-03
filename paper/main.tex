@@ -1,0 +1,893 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{a4paper,total={170mm,257mm},left=20mm,top=20mm}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype,booktabs,array}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\hypersetup{pdftitle={Asymptotic Tensor-Rank Sublevels Need Not Be Irreducible},pdfauthor={Wenqi Zhu; Qiyuan Chen; Ping Nie}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newcommand{\AR}{\widetilde{\mathrm R}}
+\newcommand{\AQ}{\widetilde{\mathrm Q}}
+\newcommand{\R}{\mathrm R}
+\newcommand{\Q}{\mathrm Q}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Cent}{Cent}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\supp}{supp}
+\title{Asymptotic Tensor-Rank Sublevels Need Not Be Irreducible\\[2pt]\large A counterexample in order four and the growth of components}
+\author{%
+Wenqi Zhu\thanks{Corresponding author.}\\
+{\small Mathematical Institute, Woodstock Road, University of Oxford,}\\
+{\small Oxford, UK, OX2 6GG}\\
+{\small\texttt{wenqi.zhu@maths.ox.ac.uk}}\\[1ex]
+Qiyuan Chen\\
+{\small Academy of Mathematics and Systems Science,}\\
+{\small Chinese Academy of Sciences, Beijing, China}\\[1ex]
+Ping Nie\\
+{\small David R. Cheriton School of Computer Science, University of Waterloo}\\
+{\small\texttt{ping.nie@uwaterloo.ca}}}
+\date{}
+
+\renewcommand{\baselinestretch}{1.15}
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\maketitle
+\begin{abstract}
+The set of complex tensors of asymptotic rank at most $\sqrt[3]{62}$
+in format $(3,3,3,2)$ is reducible in the Zariski topology.
+This gives a negative answer to the irreducibility question when
+quantified over all tensor orders at least three; the order-three
+question remains open. A finite Fourier degeneration and Strassen's
+asymptotic-spectrum and tight-support theorems give the bound
+$\AR(P)^3\leq 74-3\sqrt[3]{81}<62$ for the three-mode permutation
+tensor $P$. The scalar centroid of $P$ supplies an ambient open
+neighborhood in which the balanced flattening constraints force the
+fourth factor to have rank one. A second rank-two tensor then exhibits
+two proper relatively closed subsets covering the entire sublevel.
+More generally, for every $n\geq3$, every order $k\geq4$ and all
+$d_1,\ldots,d_k\geq2$, we exhibit
+thresholds $n<B_n<n+1$ such that, for $B_n\leq a<n+1$, the complex
+asymptotic-rank sublevel in format $(d_1,\ldots,d_k)$ has at least
+$\binom{t_n}{3}+1$ irreducible components, where $t_n=\#\{i:d_i\geq n\}$.
+The finite identities and witness geometry admit exact arithmetic
+checks and a Lean certificate; the asymptotic and Zariski arguments
+are given in the text.
+\end{abstract}
+
+\section{The main theorem and its context}\label{sec:intro}
+
+For a tensor $T\in V_1\otimes\cdots\otimes V_k$, let $\R(T)$ be
+its rank with respect to the indicated $k$ factors. We use the grouped
+tensor power
+\[
+ T^{\boxtimes m}\in V_1^{\otimes m}\otimes\cdots\otimes V_k^{\otimes m}
+\]
+and the asymptotic rank
+\begin{equation}\label{eq:asymrank}
+ \AR(T)=\lim_{m\to\infty}\R(T^{\boxtimes m})^{1/m},
+ \qquad \AR(0)=0.
+\end{equation}
+For a nonzero tensor the limit exists by submultiplicativity of rank.
+Throughout the paper the ground field is $\C$.
+
+\begin{theorem}\label{thm:main}
+In the $54$-dimensional vector space
+\[
+ V=\C^3\otimes\C^3\otimes\C^3\otimes\C^2,
+ \qquad a=\sqrt[3]{62},
+\]
+the asymptotic-rank sublevel
+\begin{equation}\label{eq:Y}
+ Y=\{T\in V:\AR(T)\leq a\}
+\end{equation}
+is reducible in the Zariski topology. In particular, the assertion that
+all asymptotic-rank sublevels are irreducible, for every algebraically
+closed field, every tensor order $k\geq3$, every tuple of positive
+factor dimensions, and every real threshold $a\geq0$, is false.
+\end{theorem}
+
+The counterexample has order four. The theorem does not settle the
+question restricted to order three. Known closedness of asymptotic-rank
+sublevels identifies $Y$ as a reducible algebraic variety; the proper
+relatively closed cover constructed below proves reducibility directly.
+
+\subsection{The question and the classical ingredients}\label{sec:history}
+Christandl, Hoeberechts, Nieuwboer, Vrana and Zuiddam proved that, for
+every field, every fixed tensor format of order at least three, and
+every real threshold, the corresponding asymptotic-rank sublevel is
+Zariski closed \cite[Theorem~1.2]{CHNVZ2024}.
+They then asked whether these sublevels are irreducible over
+algebraically closed fields \cite[Section~5]{CHNVZ2024}.
+The source explicitly distinguishes the familiar irreducible
+determinantal varieties of matrices from the open question for
+orders $k\geq3$.  The public catalogue records the latter with its
+universal quantifiers \cite{CatalogueIrreducibility}.
+The present example answers that all-orders question negatively in
+order four.  It leaves the separately restricted three-mode question
+open.
+
+The asymptotic-rank estimate uses Strassen's asymptotic spectrum and
+his entropy formula for tight three-mode supports
+\cite{Strassen1988,Strassen1991}.  We use the formulations in
+Christandl, Vrana and Zuiddam
+\cite[Theorem~1.1, Proposition~1.6, Definition~4.1,
+Theorem~4.4 and Corollary~4.5]{CVZ2018}.
+Spectral points turn direct sums and grouped products into addition
+and multiplication.  The tight-support theorem supplies a lower
+bound on an auxiliary tensor's asymptotic subrank, which can then
+be subtracted from a direct-sum spectral inequality.  Both classical
+theorems are applied to three-mode tensors.  Appending the fourth
+factor in the geometric example uses elementary rank and flattening
+arguments.
+
+The six-permutation tensor $P$ defined in~\eqref{eq:Pxy} is the variant denoted $\mathrm{cw}'_2$
+in the Coppersmith--Winograd literature
+\cite{CoppersmithWinograd1990,AlmanLi2026}.
+Alman and Li developed quantitative asymptotic-rank speedups using
+degenerations with nontrivial direct sums on both sides
+\cite[Sections~4 and~7.1]{AlmanLi2026}.  Their Corollary~7.2 in the
+pinned arXiv version, equivalently Corollary~34 in the conference
+version, applies to this exact tensor and already gives
+$\widetilde R(P)\leq\gamma_2'\approx3.9309$ (their Table~1), which is
+below $\sqrt[3]{62}$; that bound alone places $x$ in the sublevel.  They also reproduce the classical
+$(q+2)$-term Laurent degeneration of the small
+Coppersmith--Winograd tensor, crediting Coppersmith and Winograd.
+
+Section~\ref{sec:exchange} gives a self-contained derivation by a direct
+finite Fourier exchange, with the exact estimate
+\[
+ \widetilde R(P)^3\leq74-3\sqrt[3]{81}<62.
+\]
+The exchange is related to the direct-sum speedup method: for example,
+Alman and Li's Proposition~7.1 in the arXiv version
+(Proposition~32 in the conference version) exchanges auxiliary matrix
+tensors with dimensions $18$ and $8$ when $q=2$ and $n=3$.
+The identity proved below instead displays the auxiliary paired
+Coppersmith--Winograd tensors and all Fourier coefficients explicitly.
+We use the estimate in an ambient open-set argument to produce two
+proper relatively closed subsets covering the full asymptotic-rank
+sublevel.  The comparisons here are confined to the cited sources;
+no priority claim is made for the tensor constructions or rank
+estimates.
+
+
+\subsection{The two witnesses and the structure of the proof}
+
+Let $e_0,e_1,e_2$ be the standard basis of $\C^3$, and let $d_0,d_1$
+be the standard basis of $\C^2$. Define
+\begin{equation}\label{eq:Pxy}
+ \begin{split}
+ P&=\sum_{(i,j,k)\text{ a permutation of }(0,1,2)}
+             e_i\otimes e_j\otimes e_k,\qquad x=P\otimes d_0,\\
+ y&=e_0\otimes e_0\otimes e_0\otimes d_0
+       +e_1\otimes e_1\otimes e_1\otimes d_1.
+ \end{split}
+\end{equation}
+Section~\ref{sec:exchange} proves
+\begin{equation}\label{eq:strict-cost}
+ \AR(P)^3\leq 74-3\sqrt[3]{81}<62,
+\end{equation}
+so $x\in Y$. The displayed decomposition and a flattening give
+$\AR(y)=2$, hence $y\in Y$ as well.
+
+Let $X\subseteq V$ be the closed locus of fourth-mode flattening rank
+at most one. We construct a polynomial open set $U\subseteq V$ such
+that $x\in U$ and $Y\cap U\subseteq X$. Its defining condition is
+the persistence of a one-dimensional kernel of a matrix of appended
+minors. Since $y\notin X$, the identity
+\begin{equation}\label{eq:cover-intro}
+ Y=(Y\cap X)\ \cup\ \bigl(Y\cap(V\setminus U)\bigr)
+\end{equation}
+is a cover by two proper relatively closed subsets. In particular,
+the open set is taken in $V$, without imposing a fixed linear slice
+on the sublevel problem.
+
+\section{The asymptotic spectrum and tight supports}\label{sec:classical}
+
+\subsection{Restrictions and the full three-mode spectrum}
+
+A \emph{restriction} $S\leq T$ means that $S$ is obtained from $T$
+by a linear map on each factor. The direct sum $S\oplus T$ uses the
+direct sum of the respective factor spaces; the product $S\boxtimes T$
+groups corresponding factors. These operations make the equivalence
+classes under mutual restriction of all complex three-mode tensors
+into a preordered semiring. Put
+\[
+ \Delta_r=\sum_{j=1}^r e_j\otimes e_j\otimes e_j.
+\]
+A spectral point on this semiring is a map $\phi$ to the nonnegative
+real numbers that is additive under $\oplus$, multiplicative under
+$\boxtimes$, normalized by $\phi(\Delta_r)=r$, and monotone under
+restriction. The spectrum in the next theorem is the spectrum of
+\emph{all} complex three-mode tensors.
+
+\begin{theorem}[Strassen's spectral characterization]\label{thm:spectrum}
+For every complex three-mode tensor $T$,
+\begin{equation}\label{eq:spectrum}
+ \AR(T)=\max_{\phi}\phi(T).
+\end{equation}
+\end{theorem}
+
+We use the formulation and tensor-semiring application in
+\cite[Theorem~1.1 and Proposition~1.6]{CVZ2018}.
+For later use, the subrank $\Q(T)$ is the largest integer $r$ for
+which $\Delta_r\leq T$, and
+\[
+ \AQ(T)=\lim_{m\to\infty}\Q(T^{\boxtimes m})^{1/m}.
+\]
+The limit follows from supermultiplicativity for nonzero tensors.
+Every spectral point satisfies
+\begin{equation}\label{eq:spectral-bounds}
+ \AQ(T)\leq\phi(T)\leq\R(T).
+\end{equation}
+Indeed, a rank decomposition realizes $T$ as a restriction of
+$\Delta_{\R(T)}$. Conversely,
+$\Q(T^{\boxtimes m})\leq\phi(T)^m$ for every $m$; taking $m$th
+roots gives the lower bound. Invertible changes of basis and nonzero
+scalar multiplication preserve all spectral values, ranks and
+asymptotic ranks, since they give restrictions in both directions.
+
+\subsection{Polynomial degenerations and interpolation}
+
+We will only use explicitly given degenerations. The following
+elementary argument explains why each spectral point is monotone
+under them.
+
+\begin{lemma}\label{lem:interpolation}
+Suppose that for every nonzero complex $t$, linear maps on the three
+factors of $K$ produce the tensor
+\[
+ F(t)=T+tT_1+\cdots+t^dT_d.
+\]
+The maps may have Laurent-polynomial entries. Then
+$\phi(T)\leq\phi(K)$ for every spectral point $\phi$.
+\end{lemma}
+
+\begin{proof}
+For each positive integer $m$, the polynomial
+$F(t)^{\boxtimes m}$ has degree at most $dm$ and constant coefficient
+$T^{\boxtimes m}$. Choose $dm+1$ distinct nonzero complex values of
+$t$. Polynomial interpolation expresses that constant coefficient
+as a linear combination of the values at those points. Each value
+is a restriction of $K^{\boxtimes m}$. A linear combination of
+$dm+1$ such restrictions is a restriction of their direct sum:
+on each direct-sum block use its three maps, absorbing the scalar
+coefficient into the first map. Consequently
+\[
+ \phi(T)^m\leq (dm+1)\phi(K)^m.
+\]
+Taking $m$th roots and letting $m$ tend to infinity proves the claim.
+If $\phi(K)=0$, the same displayed inequality already implies
+$\phi(T)=0$. Laurent entries cause no difficulty because the
+evaluations avoid zero and the \emph{combined output} is polynomial.
+\end{proof}
+
+\subsection{The three-mode tight-support theorem}
+
+Fix bases indexed by finite sets $I_1,I_2,I_3$. A support
+$\Phi\subseteq I_1\times I_2\times I_3$ is \emph{tight} if there
+are injective maps $\alpha_j:I_j\to\mathbb Z$ such that
+\begin{equation}\label{eq:tight}
+ \alpha_1(i_1)+\alpha_2(i_2)+\alpha_3(i_3)=0
+ \quad\text{for every }(i_1,i_2,i_3)\in\Phi.
+\end{equation}
+For a probability distribution $p$ on $\Phi$, write $p_j$ for its
+marginal on $I_j$, and use natural logarithms in the entropy
+$H(p_j)=-\sum_i p_j(i)\log p_j(i)$, with $0\log0=0$.
+
+\begin{theorem}[Strassen's tight-support theorem]\label{thm:tight}
+Let $T$ be a complex three-mode tensor whose support in some bases is
+tight. For every probability distribution $p$ on that support,
+\begin{equation}\label{eq:tight-bound}
+ \AQ(T)\geq \min_{1\leq j\leq3}\exp H(p_j).
+\end{equation}
+\end{theorem}
+
+This is the needed consequence of
+\cite[Definition~4.1, Theorem~4.4 and Corollary~4.5]{CVZ2018}.
+The hypothesis concerns the support and injective integer weights;
+there is no extra equality or positivity hypothesis on its nonzero
+coefficients. The theorem is a three-mode result. We apply it to a
+three-mode auxiliary tensor, before adjoining the fourth factor in
+Section~\ref{sec:cover}.
+
+\section{A strict asymptotic-rank bound for the permutation tensor}
+\label{sec:exchange}
+
+\subsection{Paired Coppersmith--Winograd tensors}\label{sec:cw}
+
+For an even positive integer $q$, let $J$ be a set of size $q$
+with a fixed-point-free involution $r\mapsto r'$. In a space with
+basis $z_0$ and $z_r$ for $r\in J$, define
+\begin{equation}\label{eq:paired-cw}
+ C_q=\sum_{r\in J}
+ \bigl(z_0\otimes z_r\otimes z_{r'}
+       +z_r\otimes z_0\otimes z_{r'}
+       +z_r\otimes z_{r'}\otimes z_0\bigr).
+\end{equation}
+Different labelings of the pairs give equivalent tensors.
+The usual small Coppersmith--Winograd tensor is
+\begin{equation}\label{eq:small-cw}
+ \operatorname{cw}_q=\sum_{j=1}^q
+ \bigl(e_0\otimes e_j\otimes e_j
+       +e_j\otimes e_0\otimes e_j
+       +e_j\otimes e_j\otimes e_0\bigr).
+\end{equation}
+
+\begin{lemma}\label{lem:cw-basis}
+Over $\C$, the tensors $C_q$ and $\operatorname{cw}_q$ are
+equivalent under invertible changes of basis. Every spectral point
+satisfies $\phi(C_q)\leq q+2$.
+\end{lemma}
+
+\begin{proof}
+Label the paired vectors $u_h,v_h$, for $1\leq h\leq q/2$.
+In each of the three modes apply the map
+\[
+ z_0\longmapsto\tfrac12e_0,\qquad
+ u_h\longmapsto e_{2h-1}+\mathrm i e_{2h},\qquad
+ v_h\longmapsto e_{2h-1}-\mathrm i e_{2h}.
+\]
+The two-by-two block on a pair has determinant $-2\mathrm i$,
+and the zero coordinate is scaled by $1/2$, so the map is invertible.
+For each pair,
+\[
+ u_h\otimes v_h+v_h\otimes u_h
+ \longmapsto
+ 2(e_{2h-1}\otimes e_{2h-1}+e_{2h}\otimes e_{2h}).
+\]
+The factor two is canceled by the zero-coordinate scaling, in each
+of its three possible positions. Thus the image is exactly
+$\operatorname{cw}_q$.
+
+For the bound, set $s=\sum_{j=1}^q e_j$. For $t\ne0$ the expression
+\begin{equation}\label{eq:cw-degeneration}
+ t^{-2}\sum_{j=1}^q(e_0+te_j)^{\otimes3}
+ -t^{-3}(e_0+t^2s)^{\otimes3}
+ +(t^{-3}-qt^{-2})e_0^{\otimes3}
+\end{equation}
+is a sum of at most $q+2$ rank-one tensors. Expanding it gives
+\begin{equation}\label{eq:cw-polynomial}
+ \operatorname{cw}_q
+ +t\left(\sum_{j=1}^q e_j^{\otimes3}
+       -e_0\otimes s\otimes s-s\otimes e_0\otimes s
+       -s\otimes s\otimes e_0\right)-t^3s^{\otimes3}.
+\end{equation}
+The coefficients of $e_0^{\otimes3}$ cancel, and the degree $-1$
+terms with two zero coordinates cancel. The remaining degree-zero
+terms are exactly~\eqref{eq:small-cw}. Applying
+Lemma~\ref{lem:interpolation} with source $\Delta_{q+2}$ shows
+$\phi(\operatorname{cw}_q)\leq q+2$. Basis invariance proves the
+same bound for $C_q$.
+\end{proof}
+
+\subsection{The group tensor and its Fourier decomposition}
+
+Identify $\F_2^2$ with the symbols $0,1,2,3$ by their two-bit
+expansions, so addition is bitwise exclusive-or. Set
+\begin{equation}\label{eq:sets}
+ \begin{split}
+ G&=(\F_2^2)^3,\qquad S=\{1,2,3\}^3,\qquad b=(1,1,1),\\
+ I&=S\cap(S+b),\qquad E=G\setminus\bigl(S\cup(S+b)\bigr).
+ \end{split}
+\end{equation}
+Here $I=\{2,3\}^3$. Since $|G|=64$ and $|S|=27$,
+inclusion-exclusion gives
+\begin{equation}\label{eq:set-sizes}
+ |I|=8,\qquad |E|=64-(27+27-8)=18.
+\end{equation}
+Both $I$ and $E$ are invariant under $r\mapsto r+b$.
+This is a fixed-point-free involution because $b\ne0$.
+Also $0\notin S\cup E$: indeed $b\in S$ implies $0\in S+b$.
+
+Let $f_g$, for $g\in G$, denote a basis and define the group tensor
+\begin{equation}\label{eq:group-tensor}
+ K_G=\sum_{u+v+w=0}f_u\otimes f_v\otimes f_w.
+\end{equation}
+Its Walsh decomposition is
+\begin{equation}\label{eq:walsh}
+ K_G=\frac1{64}\sum_{\chi\in\widehat G}
+       \left(\sum_{g\in G}\chi(g)f_g\right)^{\otimes3},
+\end{equation}
+where $\widehat G$ is the set of the $64$ characters with values
+in $\{1,-1\}$. For a coefficient indexed by $(u,v,w)$ the right
+side is $64^{-1}\sum_\chi\chi(u+v+w)$. This equals one if the
+sum is zero. Otherwise, choosing a character that is negative on
+that nonzero group element pairs the terms with their negatives.
+This proves~\eqref{eq:walsh} and $\R(K_G)\leq64$.
+
+\subsection{The finite exchange}\label{sec:finite-exchange}
+
+In each target factor use the disjoint basis vectors
+\[
+ \{x_g:g\in S\}\ \sqcup\ \{z_0\}\ \sqcup\ \{z_g:g\in E\}.
+\]
+Apply in all three modes the Laurent map
+\begin{equation}\label{eq:laurent-map}
+ f_g\longmapsto
+ \boldsymbol1_{g\in S}x_g
+ +t^{-2}\boldsymbol1_{g=b}z_0
+ +t\boldsymbol1_{g\in E}z_g.
+\end{equation}
+In particular, $f_b$ has both an $x_b$ component and a $z_0$
+component; the formula is a sum of components, not a partition of
+the source basis. The image of $f_0$ is zero.
+
+\begin{lemma}\label{lem:exchange}
+There are Laurent-polynomial restrictions of $\Delta_{64}\oplus C_8$
+whose combined output is a polynomial in $t$ of degree at most three
+with constant coefficient
+\begin{equation}\label{eq:exchange-target}
+ P^{\boxtimes3}\oplus C_{18}.
+\end{equation}
+Consequently every spectral point satisfies
+\begin{equation}\label{eq:exchange-spectral}
+ \phi(P)^3+\phi(C_{18})\leq64+\phi(C_8).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+First apply~\eqref{eq:laurent-map} to $K_G$. A term using only
+$x$ components has degree zero. For each of the three coordinates
+of $G$, three elements of $\{1,2,3\}$ sum to zero exactly when
+they are the three distinct nonzero elements of $\F_2^2$.
+Identify $1,2,3$ with the basis labels $0,1,2$ of $P$.
+The $x$-only part is then $P^{\boxtimes3}$, with $6^3=216$
+nonzero coefficients, all equal to one.
+
+Consider a term with exactly one $z_0$ component. Its corresponding
+group index is $b$, and the other two group indices must sum to $b$.
+There are three possibilities for their target types:
+\begin{enumerate}
+\item Two $x$ components have degree $-2$. Their indices lie in
+$I$, paired by $r\mapsto r+b$. Taking all three positions of $z_0$
+gives exactly $t^{-2}C_8(z_0,x_i:i\in I)$.
+\item One $x$ component and one $z_r$, for $r\in E$, would have
+degree $-1$, but cannot occur. If the first index is in $S$, the
+second must be in $S+b$, which is disjoint from $E$.
+\item Two $E$ components have degree zero. Their indices are the
+$18$ elements of $E$, paired by the same involution. These terms
+give exactly $C_{18}$, with $3\cdot18=54$ support coefficients.
+\end{enumerate}
+Two $z_0$ components would require the third group index to be zero,
+whose image is zero. Three would require $b+b+b=0$, contrary to
+$b\ne0$. Finally, terms with no $z_0$ and at least one $E$ component
+have positive degree, at most three. This exhausts every possible
+term, including the two components of the image of $f_b$.
+
+Now adjoin a disjoint copy of the paired tensor $C_8$ to the source.
+Label its nonzero basis vectors by $I$ with the pairing $i\mapsto i+b$.
+In each mode send its zero-index basis vector to $-t^{-2}z_0$ and its
+other basis vectors to $x_i$. Every term of that tensor has exactly
+one zero-index basis vector, so its image is precisely
+$-t^{-2}C_8(z_0,x_i:i\in I)$. This cancels all negative degrees.
+The resulting output is polynomial of degree at most three, with
+the constant coefficient in~\eqref{eq:exchange-target}. Its two
+summands occupy disjoint coordinates in every factor.
+
+Equation~\eqref{eq:walsh} realizes $K_G$ as a restriction of
+$\Delta_{64}$, so the same construction has source
+$\Delta_{64}\oplus C_8$. Lemma~\ref{lem:interpolation}, together
+with additivity and multiplicativity of $\phi$, proves
+\eqref{eq:exchange-spectral}.
+\end{proof}
+
+\subsection{The tight auxiliary tensor and the exact constant}
+
+Choose labels $u_h,v_h$, for $1\leq h\leq9$, for the pairs of
+$C_{18}$. Assign weight $0$ to $z_0$, weight $h$ to $u_h$ and
+weight $-h$ to $v_h$, in each of the three modes. These weights
+are injective within a mode and sum to zero on every support
+triple. Thus $C_{18}$ has tight support.
+
+Give each of its $54$ support triples probability $1/54$.
+Every marginal has mass $1/3$ at the zero coordinate and mass
+$2/54=1/27$ at each of its $18$ other coordinates. Its entropy
+therefore satisfies
+\begin{equation}\label{eq:entropy}
+ \begin{split}
+ \exp H
+ &=\exp\left(-\tfrac13\log\tfrac13
+             -18\cdot\tfrac1{27}\log\tfrac1{27}\right)\\
+ &=3^{7/3}=3\sqrt[3]{81}.
+ \end{split}
+\end{equation}
+Theorem~\ref{thm:tight} and~\eqref{eq:spectral-bounds} give
+$\phi(C_{18})\geq\AQ(C_{18})\geq3\sqrt[3]{81}$ for every
+spectral point. Lemma~\ref{lem:cw-basis} gives $\phi(C_8)\leq10$.
+Substituting both inequalities into~\eqref{eq:exchange-spectral}
+yields the uniform estimate
+\begin{equation}\label{eq:phiP}
+ \phi(P)^3\leq64+10-3\sqrt[3]{81}
+             =74-3\sqrt[3]{81}.
+\end{equation}
+Taking the maximum in Theorem~\ref{thm:spectrum} proves the
+first inequality of~\eqref{eq:strict-cost}.
+
+All comparisons needed for the threshold are exact. Since
+$81>64=4^3$, one has $3\sqrt[3]{81}>12$, so the last expression
+in~\eqref{eq:phiP} is strictly less than $62$. Moreover
+\begin{equation}\label{eq:threshold}
+ 27<62<64
+ \quad\Longrightarrow\quad
+ 3<\sqrt[3]{62}<4.
+\end{equation}
+No decimal estimate or assumption about $\AR(P)$ is used.
+
+\section{Scalar centroids and an ambient open neighborhood}
+\label{sec:geometry}
+
+Set $A=B=C=\C^3$ and $D=\C^2$. Every element of $V$ has a
+unique expression
+\begin{equation}\label{eq:slices}
+ W=T\otimes d_0+S\otimes d_1,
+ \qquad T,S\in A\otimes B\otimes C.
+\end{equation}
+The fourth-mode flattening views $W$ as a map
+$D^*\to A\otimes B\otimes C$. Its rank is the dimension of
+$\operatorname{span}\{T,S\}$. Hence
+\begin{equation}\label{eq:X}
+ X=\{W:\rank(W_{ABC\mid D})\leq1\}
+   =\{T\otimes v:T\in A\otimes B\otimes C,\ v\in D\}
+\end{equation}
+is closed, defined by the two-by-two minors of a $27$-by-$2$ matrix.
+
+Let $Z\subseteq V$ be the common rank-at-most-three locus of the
+three balanced flattenings
+\begin{equation}\label{eq:Z}
+ AB\mid CD,\qquad AC\mid BD,\qquad BC\mid AD.
+\end{equation}
+These are $9$-by-$6$ matrices, so their four-by-four minors define
+$Z$. Every point of $X$ lies in $Z$: for example the $AB\mid CD$
+flattening of $T\otimes(v_0d_0+v_1d_1)$ is
+$[v_0M\ v_1M]$, where $M=T_{AB\mid C}$ has three columns.
+
+\subsection{An appended-minor matrix}
+
+Write $M_C(T)$ for the $9$-by-$3$ flattening with row indices in
+$A\times B$ and column indices in $C$. Define $M_B(T)$ and
+$M_A(T)$ by the other two choices of the singled-out factor.
+A tensor $T$ is \emph{concise} if all three matrices have rank three.
+
+For each of these three matrices, append one of the three columns
+of the corresponding matrix of $S$, and take the determinant on
+each choice of four rows. These expressions are linear in the
+$27$ entries of $S$. Collect their coefficients into the matrix
+\begin{equation}\label{eq:L}
+ L(T):\C^{27}\longrightarrow\C^{1134},
+ \qquad 1134=3\cdot3\binom94.
+\end{equation}
+Every entry of $L(T)$ is a homogeneous cubic polynomial in the
+coordinates of $T$. Appending a column of $T$ repeats an existing
+column, so
+\begin{equation}\label{eq:LT}
+ L(T)T=0\quad\text{for every }T.
+\end{equation}
+
+\begin{lemma}\label{lem:appended}
+If $T$ is concise, then the tensor $W$ in~\eqref{eq:slices}
+belongs to $Z$ if and only if $L(T)S=0$.
+\end{lemma}
+
+\begin{proof}
+Up to column permutations, each balanced flattening of $W$ is
+$[M_j(T)\ M_j(S)]$. Since $M_j(T)$ has rank three, that block
+matrix has rank at most three exactly when every column of
+$M_j(S)$ belongs to the column space of $M_j(T)$. Appending a
+single column gives a $9$-by-$4$ matrix. Its four-by-four minors
+all vanish exactly when its rank is at most three, which, because
+the original three columns are independent, is precisely the
+required membership condition. Doing this for all columns and
+all three flattenings proves both directions.
+\end{proof}
+
+\subsection{The centroid interpretation and the kernel at \texorpdfstring{$P$}{P}}
+
+For a concise tensor $T$, define its centroid to be the vector space
+\begin{equation}\label{eq:centroid}
+ \begin{split}
+ \Cent(T)=\{(F_A,F_B,F_C)\in\End(A)\oplus\End(B)\oplus\End(C):\ &
+ (F_A\otimes1\otimes1)T\\
+ &=(1\otimes F_B\otimes1)T
+ =(1\otimes1\otimes F_C)T\}.
+ \end{split}
+\end{equation}
+Taking the common value identifies this vector space with
+$\ker L(T)$. To see this, concision makes each map
+$F_j\mapsto F_j\cdot T$ injective. Its image consists precisely
+of those $S$ for which the columns of $M_j(S)$ belong to the
+column space of $M_j(T)$: a matrix relation
+$M_j(S)=M_j(T)H$ corresponds to action by the transpose of $H$
+on the singled-out factor. The three simultaneous membership
+conditions are exactly those defining $\ker L(T)$.
+Under this identification, the common scalar triples
+$(\lambda1_A,\lambda1_B,\lambda1_C)$ correspond to $\lambda T$.
+
+\begin{lemma}\label{lem:scalar}
+The tensor $P$ is concise, and
+\begin{equation}\label{eq:kernelP}
+ \ker L(P)=\C P,\qquad \rank L(P)=26.
+\end{equation}
+Equivalently, $\Cent(P)$ consists exactly of the common scalar triples.
+\end{lemma}
+
+\begin{proof}
+The columns of $M_C(P)$ are the three independent vectors
+\[
+ e_1\otimes e_2+e_2\otimes e_1,\quad
+ e_0\otimes e_2+e_2\otimes e_0,\quad
+ e_0\otimes e_1+e_1\otimes e_0.
+\]
+Their span is the space of symmetric three-by-three matrices with
+zero diagonal. The same description holds for $M_A(P)$ and
+$M_B(P)$ by permutation symmetry, proving concision.
+
+If $L(P)S=0$, the column-space characterization in the preceding
+lemma says, for each fixed $k$, that the array $(S_{ijk})_{i,j}$
+is symmetric with zero diagonal. The other two flattenings give
+the same condition for the other pairs of indices. Thus the
+coefficients of $S$ are unchanged by each transposition of the
+three indices and vanish whenever any two indices coincide.
+The only possible nonzero coefficients are the six permutations
+of $(0,1,2)$; transpositions act transitively on these six, so all
+six coefficients agree. Therefore $S$ is a scalar multiple of $P$.
+Conversely,~\eqref{eq:LT} shows that every such multiple lies in
+the kernel. Rank-nullity gives $27-1=26$, and the centroid
+description follows from the preceding identification.
+\end{proof}
+
+\subsection{Persistence in the full ambient space}
+
+Define $U\subseteq V$ by the following conditions on the first
+slice in~\eqref{eq:slices}:
+\begin{equation}\label{eq:U}
+ U=\{T\otimes d_0+S\otimes d_1:
+       \rank M_A(T)=\rank M_B(T)=\rank M_C(T)=3,
+       \ \rank L(T)\geq26\}.
+\end{equation}
+Each condition is polynomial open: maximal flattening rank is
+the nonvanishing of at least one three-by-three minor, and
+$\rank L(T)\geq26$ is the nonvanishing of at least one
+$26$-by-$26$ minor. The slice projection $W\mapsto T$ is linear,
+so these conditions indeed define an open subset of all of $V$.
+Lemma~\ref{lem:scalar} shows that $x=P\otimes d_0\in U$.
+
+\begin{proposition}\label{prop:open}
+The open set $U$ satisfies $Z\cap U\subseteq X$.
+\end{proposition}
+
+\begin{proof}
+Take $W=T\otimes d_0+S\otimes d_1\in Z\cap U$.
+Concision implies $T\ne0$. By~\eqref{eq:LT}, the kernel of
+$L(T)$ contains this nonzero vector, so its rank is at most $26$.
+The defining inequality of $U$ forces equality. Thus
+$\ker L(T)=\C T$. Since $W\in Z$, Lemma~\ref{lem:appended}
+gives $L(T)S=0$, and therefore $S=\lambda T$ for a scalar
+$\lambda$. It follows that
+\[
+ W=T\otimes(d_0+\lambda d_1)\in X.
+\]
+\end{proof}
+
+This is the only persistence statement needed: one nonzero minor
+at $P$, together with the universal kernel vector $T$, keeps the
+kernel one-dimensional on an open neighborhood. No assertion
+about arbitrary tensors with deficient single-mode ranks is used.
+
+\section{The proper relatively closed cover}\label{sec:cover}
+
+We first record why all relevant matrix-rank constraints follow
+from asymptotic tensor rank, and why adding a fixed factor does
+not change the rank of a tensor.
+
+\begin{lemma}\label{lem:flatten}
+For any tensor $T$ of any order, the rank of every matrix
+flattening of $T$ is at most $\AR(T)$.
+\end{lemma}
+
+\begin{proof}
+Let a flattening have rank $r$. The corresponding flattening of
+$T^{\boxtimes m}$ is, up to permutations of rows and columns,
+the $m$th matrix Kronecker power of that flattening and has
+rank $r^m$. Every rank-one tensor becomes a matrix of rank at
+most one under a flattening, so $r^m\leq\R(T^{\boxtimes m})$.
+Taking $m$th roots and the limit proves the claim, including the
+zero tensor.
+\end{proof}
+
+\begin{lemma}\label{lem:append}
+If $v$ is a fixed nonzero vector in an additional factor, then
+$\R(T\otimes v)=\R(T)$ and $\AR(T\otimes v)=\AR(T)$,
+where the two ranks use their respective numbers of factors.
+\end{lemma}
+
+\begin{proof}
+A rank decomposition of $T$ gives one of $T\otimes v$ with
+the same number of terms. Choose a linear functional $\ell$
+with $\ell(v)=1$. Applying it to the last factor of any
+decomposition of $T\otimes v$ gives a decomposition of $T$,
+with no more terms. These are the two rank inequalities.
+Apply the same argument to each power, with added vector
+$v^{\otimes m}$, and take $m$th roots and limits.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For any $W\in Y$, Lemma~\ref{lem:flatten} bounds each balanced
+flattening rank by $\AR(W)\leq a<4$. Matrix rank is integral,
+so all three ranks are at most three. Therefore $Y\subseteq Z$.
+
+Equation~\eqref{eq:strict-cost} and Lemma~\ref{lem:append} imply
+$\AR(x)=\AR(P)<a$, so $x\in Y$. The tensor $y$ in
+\eqref{eq:Pxy} has rank at most two by its displayed decomposition.
+Its fourth-mode flattening has two independent columns, so
+Lemma~\ref{lem:flatten} gives $\AR(y)\geq2$. Since
+$\AR(y)\leq\R(y)\leq2$, equality holds. In particular
+$y\in Y$, because $2<a$, and $y\notin X$.
+
+The sets
+\[
+ Y_1=Y\cap X,\qquad Y_2=Y\cap(V\setminus U)
+\]
+are relatively Zariski closed in $Y$, since $X$ and $V\setminus U$
+are closed in $V$. They cover $Y$: if a point of $Y$ lies in $U$,
+then it lies in $Z\cap U\subseteq X$ by
+Proposition~\ref{prop:open}; otherwise it belongs to $Y_2$.
+Both pieces are proper. The point $y$ belongs to $Y\setminus Y_1$,
+and the point $x$ belongs to $Y\setminus Y_2$ because $x\in U$.
+Thus $Y$ is reducible as a topological subspace of $V$.
+Its known Zariski closedness \cite[Theorem~1.2]{CHNVZ2024}
+then gives the stated interpretation as a reducible algebraic
+variety.
+\end{proof}
+
+The use of four factors occurs in the pair of slices and their
+balanced flattenings. The spectral and tight-support estimates
+are applied exclusively to three-mode tensors. The proper cover
+does not imply that either displayed piece is irreducible or
+that there are exactly two irreducible components.
+
+\input{sections/components}
+
+\section{Exact verification and the finite formal layer}\label{sec:verification}
+The finite calculations have two complementary forms: exact arithmetic
+certificates for the explicit coefficients and matrices, and a Lean
+proof of a proposition collecting their algebraic identities. All
+calculations use integers, rational numbers, or Gaussian integers.
+No floating-point tolerance, numerical rank decision, or recognition
+of a decimal approximation is involved.
+
+\subsection{Exact coefficient and matrix certificates}
+
+The geometry calculation reconstructs all $1134$ rows of $L(P)$
+from the appended determinants, using all $\binom94=126$ increasing
+four-row choices for each relevant column and flattening. Rational
+elimination gives rank $26$, and the identity $L(P)P=0$ identifies
+its one-dimensional kernel. The same calculation checks the three
+rank-three single-mode flattenings of $P$, the fourth-mode rank
+two of $y$, and the three balanced ranks two of $y$.
+A supplementary Gaussian change of basis takes $P$ to
+$2\operatorname{cw}_2$; this identity is not needed in the geometric
+argument of Section~\ref{sec:geometry}.
+
+There are two independent coefficient calculations for the exchange.
+One constructs the group, Walsh coefficients and sparse Laurent maps
+directly, without reading the coefficient certificate. The other
+contracts the specified $73$-to-$46$-dimensional maps and evaluates
+all $46^3=97\,336$ ordered output coefficients. The source is written
+using $88$ terms: $64$ Walsh summands and $24$ paired-$C_8$ terms.
+These calculations check the cancellation of every pole and the
+$270=216+54$ nonzero constant coefficients of
+$P^{\boxtimes3}\oplus C_{18}$. They also check the ten-term
+$\operatorname{cw}_8$ polynomial identity, the $19$ injective integer
+weights for $C_{18}$, the zero weight sum on all $54$ support triples,
+and all marginal counts. The counts are $18$ at the zero index
+and $2$ at each other index, giving the rational probabilities
+$1/3$ and $1/27$. The entropy evaluation and its asymptotic
+consequence are the written calculation~\eqref{eq:entropy} and
+Theorem~\ref{thm:tight}.
+
+The three exact checkers reconstruct the expected tensors and reject
+invalid input formats. Their runner binds the proof and certificate
+files by hashes and compares registered output in ordinary execution,
+optimized Python execution, and execution with a second hash seed.
+One invocation includes nine positive executions and $48$ external
+negative-control executions: each of $16$ specified corruptions must
+be rejected in each of the three modes. The corruptions change, among
+other quantities, the pole-cancellation sign, Fourier normalization,
+a target coefficient, a degeneration scalar, the injectivity of tight
+weights, or a witness rank. The coefficient checker also carries out
+four corruption checks within each positive execution. Failure is
+explicit and does not depend on assertions that optimization could
+remove.
+
+\subsection{The precise scope of the Lean certificate}
+
+The formal proposition, with theorem name
+\texttt{finiteCertificate}, combines the following statements.
+It proves the complete enumeration of the minor rows and, for every
+complex pair $T,S$, the equality between the appended determinant
+and the corresponding coordinate of $L(T)S$. It proves $L(T)T=0$
+for every complex $T$, the rank $26$ of $L(P)$, and
+$L(P)S=0$ if and only if $S=cP$ for a complex scalar $c$.
+The witness flattening ranks and the supplementary Gaussian
+$P$-to-$2\operatorname{cw}_2$ change of basis are included.
+
+For the exchange, the proposition proves the finite group and set
+identities, Walsh orthogonality, agreement of the dense and sparse
+contractions, and the permutation-coordinate identification of
+$P^{\boxtimes3}$. It proves the Laurent coefficient identities at
+every output triple, including vanishing in every degree below zero
+or above three. The coefficient representation uses an integer
+normalization, with constant coefficient $64$ times the specified
+target; division by $64$ gives the normalization in
+\eqref{eq:walsh}. The tight weights, marginal counts and integer
+comparisons $27<62<64<81$ are included. The ten-term
+$\operatorname{cw}_8$ identity is proved for every nonzero complex
+parameter and all $9^3$ coordinate triples, with the required
+constant value at zero of its regular polynomial expression.
+
+The formal development uses Lean \texttt{v4.34.0-rc2} with a pinned
+Mathlib revision. Its final theorem has precisely the logical
+axioms \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound}. Source and literal-data checks accompany a
+clean rebuild and include controls for altered inputs, missing
+proofs, altered build configuration or dependency manifests, and
+unexpected axiom output.
+
+This certificate does not formalize asymptotic rank or border rank,
+Strassen's spectral or tight-support theorems, or the implication
+from entropy to asymptotic subrank. It also does not formalize the
+general balanced-rank-to-kernel equivalence of
+Lemma~\ref{lem:appended}, the open-neighborhood argument, or the
+proper relatively closed cover. The paired-$C_8$ to diagonal
+$\operatorname{cw}_8$ basis change in Lemma~\ref{lem:cw-basis}
+is a separate written bridge; the formalized Gaussian change for
+$P$ does not replace it. None of these omitted statements is a
+premise of the formal proposition. The asymptotic-rank bound and
+the reducibility theorem follow from the finite identities together
+with the stated classical inputs and the written arguments above.
+
+
+
+\section*{Statements and Declarations}
+\paragraph{Funding.}
+The research of Wenqi Zhu was supported by the Engineering and Physical
+Sciences Research Council under grant EP/Y028872/1, \emph{Mathematical
+Foundations of Intelligence: An ``Erlangen Programme'' for AI}.
+
+\paragraph{Competing interests.}
+The authors have no competing interests to declare that are relevant to
+the content of this article.
+
+\paragraph{Data availability.}
+The exact verification scripts, certificates and Lean~4 files accompanying
+this paper are available at
+\url{https://github.com/erenup/asymptotic-rank-sublevels}.
+
+\paragraph{Use of generative AI and AI-assisted technologies.}
+During the preparation of this work, the authors used AI tools (Codex and Claude Code) to generate candidate constructions and code, perform computations, draft mathematical arguments, and improve the readability of the text. After using these
+tools, the authors reviewed and edited the content as needed and take full
+responsibility for the content of the publication. The finite identities and the witness geometry are certified by exact arithmetic and by a Lean~4 finite certificate (Section~\ref{sec:verification}); the asymptotic-rank and Zariski arguments are given in full in the text.
+
+\begingroup
+\interlinepenalty=10000
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\endgroup
+\end{document}

@@ -1,0 +1,703 @@
+{
+  "schema_version": 1,
+  "paper": "paper/main.tex",
+  "scope": "Every numbered theorem, proposition, lemma, corollary, definition and remark of paper/main.tex and paper/sections/components.tex is indexed in TeX order. Every field of the Lean proposition TR23.FiniteCertificate and of its three component certificates is mapped to the declaration that proves it. No numbered paper result is claimed to be formalized in Lean in full; the Lean theorem is a finite certificate layer.",
+  "aggregate": {
+    "declaration": "TR23.finiteCertificate",
+    "source": "lean/TR23.lean",
+    "proposition": "TR23.FiniteCertificate",
+    "proposition_source": "lean/TR23/Statement.lean",
+    "axiom_probe": "lean/audit/Axioms.lean",
+    "scope": "Conjunction of the geometry, exchange and cw8 certificates, the permutation-coordinate bridge and three integer comparisons. It has no asymptotic-rank, border-rank, spectral, Zariski-topological or irreducibility premise or conclusion."
+  },
+  "certificates": [
+    {
+      "structure": "TR23.Geometry.GeometryCertificate",
+      "structure_source": "lean/TR23/GeometryDefinitions.lean",
+      "declaration": "TR23.Geometry.geometryCertificate",
+      "source": "lean/TR23/Geometry.lean",
+      "aggregate_field": "geometry"
+    },
+    {
+      "structure": "TR23.Exchange.ExchangeCertificate",
+      "structure_source": "lean/TR23/ExchangeDefinitions.lean",
+      "declaration": "TR23.Exchange.exchangeCertificate",
+      "source": "lean/TR23/Exchange.lean",
+      "aggregate_field": "exchange"
+    },
+    {
+      "structure": "TR23.CWCertificate",
+      "structure_source": "lean/TR23/CWDefinitions.lean",
+      "declaration": "TR23.cwCertificate",
+      "source": "lean/TR23/CWIdentity.lean",
+      "aggregate_field": "cw_identity"
+    }
+  ],
+  "lean_targets": [
+    {
+      "id": "geometry_rows",
+      "declaration": "TR23.Geometry.rows_complete",
+      "source": "lean/TR23/GeometryRows.lean",
+      "field": "TR23.Geometry.GeometryCertificate.row_enumeration",
+      "scope": "The table of 126 four-row choices from nine rows is strictly increasing in each entry, injective, and complete: every strictly increasing choice of four rows occurs."
+    },
+    {
+      "id": "geometry_minor_identity",
+      "declaration": "TR23.Geometry.appended_minor_identity",
+      "source": "lean/TR23/GeometryMinors.lean",
+      "field": "TR23.Geometry.GeometryCertificate.appended_minor_identity",
+      "scope": "For all complex T and S and each of the 1134 minor rows, the corresponding coordinate of L(T)S is the determinant of four rows of a 9-by-3 flattening of T with one appended column of the corresponding flattening of S."
+    },
+    {
+      "id": "geometry_self_kernel",
+      "declaration": "TR23.Geometry.self_kernel",
+      "source": "lean/TR23/GeometryMinors.lean",
+      "field": "TR23.Geometry.GeometryCertificate.self_kernel",
+      "scope": "L(T)T = 0 for every complex T."
+    },
+    {
+      "id": "geometry_P_concise",
+      "declaration": "TR23.Geometry.witness_P_flattening_rank",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.P_flattening_rank",
+      "scope": "Each of the three 9-by-3 single-mode flattenings of P has rank 3."
+    },
+    {
+      "id": "geometry_P_rank",
+      "declaration": "TR23.Geometry.P_minor_rank",
+      "source": "lean/TR23/GeometryRank.lean",
+      "field": "TR23.Geometry.GeometryCertificate.P_minor_rank",
+      "scope": "The 1134-by-27 matrix L(P) has rank 26."
+    },
+    {
+      "id": "geometry_P_kernel",
+      "declaration": "TR23.Geometry.P_kernel",
+      "source": "lean/TR23/GeometryRank.lean",
+      "field": "TR23.Geometry.GeometryCertificate.P_kernel",
+      "scope": "For complex S, L(P)S = 0 if and only if S = cP for a complex scalar c."
+    },
+    {
+      "id": "geometry_x_fourth_rank",
+      "declaration": "TR23.Geometry.witness_x_fourth_rank",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.x_fourth_rank",
+      "scope": "The fourth-mode flattening of x = P tensor d_0 has rank 1."
+    },
+    {
+      "id": "geometry_y_fourth_rank",
+      "declaration": "TR23.Geometry.witness_y_fourth_rank",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.y_fourth_rank",
+      "scope": "The fourth-mode flattening of y has rank 2."
+    },
+    {
+      "id": "geometry_y_balanced_rank",
+      "declaration": "TR23.Geometry.witness_y_balanced_rank",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.y_balanced_rank",
+      "scope": "Each of the three balanced 9-by-6 flattenings of y has rank 2."
+    },
+    {
+      "id": "geometry_y_outside",
+      "declaration": "TR23.Geometry.witness_y_outside_rank_one",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.y_outside_rank_one",
+      "scope": "y does not satisfy the fourth-mode rank-at-most-one condition defining X."
+    },
+    {
+      "id": "geometry_basis_determinant",
+      "declaration": "TR23.Geometry.witness_basis_determinant",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.basis_determinant",
+      "scope": "The Gaussian-integer change-of-basis matrix has determinant -2i."
+    },
+    {
+      "id": "geometry_basis_nonsingular",
+      "declaration": "TR23.Geometry.witness_basis_nonsingular",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.basis_nonsingular",
+      "scope": "The same determinant is nonzero."
+    },
+    {
+      "id": "geometry_basis_image",
+      "declaration": "TR23.Geometry.witness_basis_image",
+      "source": "lean/TR23/GeometryWitnesses.lean",
+      "field": "TR23.Geometry.GeometryCertificate.basis_image",
+      "scope": "Applying that matrix in all three modes sends P to 2 cw_2."
+    },
+    {
+      "id": "exchange_group_card",
+      "declaration": "TR23.Exchange.finite_group_card",
+      "source": "lean/TR23/ExchangeFiniteBasics.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.group_card",
+      "scope": "The group G = (F_2^2)^3 has 64 elements."
+    },
+    {
+      "id": "exchange_set_cards",
+      "declaration": "TR23.Exchange.finite_set_cards",
+      "source": "lean/TR23/ExchangeFiniteBasics.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.set_cards",
+      "scope": "The sets S, I and E have 27, 8 and 18 elements."
+    },
+    {
+      "id": "exchange_dimensions",
+      "declaration": "TR23.Exchange.finite_dimensions",
+      "source": "lean/TR23/ExchangeFiniteBasics.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.dimensions",
+      "scope": "The source and target coordinate sets of the exchange maps have 73 and 46 elements."
+    },
+    {
+      "id": "exchange_inner_translation",
+      "declaration": "TR23.Exchange.finite_inner_translation",
+      "source": "lean/TR23/ExchangeFiniteBasics.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.inner_translation",
+      "scope": "I is invariant under translation by b."
+    },
+    {
+      "id": "exchange_residual_translation",
+      "declaration": "TR23.Exchange.finite_residual_translation",
+      "source": "lean/TR23/ExchangeFiniteBasics.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.residual_translation",
+      "scope": "E is invariant under translation by b."
+    },
+    {
+      "id": "exchange_shift_free",
+      "declaration": "TR23.Exchange.finite_shift_fixed_point_free",
+      "source": "lean/TR23/ExchangeFiniteBasics.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.shift_fixed_point_free",
+      "scope": "Translation by b has no fixed point in G."
+    },
+    {
+      "id": "exchange_digit_bijection",
+      "declaration": "TR23.Exchange.finite_digit_bijection",
+      "source": "lean/TR23/ExchangeFinite.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.digit_bijection",
+      "scope": "The digit map from S to triples of basis labels of P is a bijection."
+    },
+    {
+      "id": "exchange_walsh",
+      "declaration": "TR23.Exchange.walsh_identity",
+      "source": "lean/TR23/ExchangeWalsh.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.walsh",
+      "scope": "For all x, y, z in G, the sum over g in G of the product of the three character values is 64 if x+y+z = 0 and 0 otherwise."
+    },
+    {
+      "id": "exchange_contraction",
+      "declaration": "TR23.Exchange.contraction_factorization",
+      "source": "lean/TR23/ExchangeContraction.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.contraction_factorization",
+      "scope": "The dense contraction of the 73-to-46 maps agrees with the sparse contraction at every output triple."
+    },
+    {
+      "id": "exchange_negative",
+      "declaration": "TR23.Exchange.negative_coefficients",
+      "source": "lean/TR23/ExchangeLaurent.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.negative_coefficients",
+      "scope": "Every Laurent coefficient of negative degree vanishes at every output triple."
+    },
+    {
+      "id": "exchange_constant",
+      "declaration": "TR23.Exchange.constant_coefficient",
+      "source": "lean/TR23/ExchangeLaurent.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.constant_coefficient",
+      "scope": "At every output triple, the degree-zero coefficient equals 64 times the coefficient of the target P^(boxtimes 3) direct sum C_18."
+    },
+    {
+      "id": "exchange_upper",
+      "declaration": "TR23.Exchange.upper_degree",
+      "source": "lean/TR23/ExchangeLaurent.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.upper_degree",
+      "scope": "Every Laurent coefficient of degree greater than three vanishes at every output triple."
+    },
+    {
+      "id": "exchange_tight_dimension",
+      "declaration": "TR23.Exchange.finite_tight_dimension",
+      "source": "lean/TR23/ExchangeFinite.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.tight_dimension",
+      "scope": "Each factor of C_18 has 19 coordinates."
+    },
+    {
+      "id": "exchange_tight_injective",
+      "declaration": "TR23.Exchange.finite_tight_injective",
+      "source": "lean/TR23/ExchangeFinite.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.tight_injective",
+      "scope": "The integer weights on these 19 coordinates are injective."
+    },
+    {
+      "id": "exchange_tight_support",
+      "declaration": "TR23.Exchange.finite_tight_support_card",
+      "source": "lean/TR23/ExchangeFinite.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.tight_support_card",
+      "scope": "The support of C_18 has 54 triples."
+    },
+    {
+      "id": "exchange_tight_sum",
+      "declaration": "TR23.Exchange.finite_tight_weight_sum",
+      "source": "lean/TR23/ExchangeFinite.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.tight_weight_sum",
+      "scope": "The three weights sum to zero on every support triple."
+    },
+    {
+      "id": "exchange_tight_marginals",
+      "declaration": "TR23.Exchange.finite_tight_marginals",
+      "source": "lean/TR23/ExchangeFinite.lean",
+      "field": "TR23.Exchange.ExchangeCertificate.tight_marginals",
+      "scope": "In each mode the zero coordinate occurs in 18 support triples and every other coordinate in 2."
+    },
+    {
+      "id": "cw_identity",
+      "declaration": "TR23.cwCertificate",
+      "source": "lean/TR23/CWIdentity.lean",
+      "field": "TR23.CWCertificate.identity",
+      "scope": "For every nonzero complex t and all 9^3 coordinate triples, the ten-term expression (3.3) with q = 8 equals the regular polynomial expression (3.4)."
+    },
+    {
+      "id": "cw_constant",
+      "declaration": "TR23.cwCertificate",
+      "source": "lean/TR23/CWIdentity.lean",
+      "field": "TR23.CWCertificate.constant_term",
+      "scope": "The regular polynomial expression takes the value cw_8 at t = 0."
+    },
+    {
+      "id": "permutation_bridge",
+      "declaration": "TR23.finiteCertificate",
+      "source": "lean/TR23.lean",
+      "field": "TR23.FiniteCertificate.permutation_bridge",
+      "scope": "The coordinates of P in the geometry layer agree with the permutation coefficients used in the exchange layer."
+    },
+    {
+      "id": "threshold_lower",
+      "declaration": "TR23.finiteCertificate",
+      "source": "lean/TR23.lean",
+      "field": "TR23.FiniteCertificate.threshold_lower",
+      "scope": "3^3 < 62."
+    },
+    {
+      "id": "threshold_upper",
+      "declaration": "TR23.finiteCertificate",
+      "source": "lean/TR23.lean",
+      "field": "TR23.FiniteCertificate.threshold_upper",
+      "scope": "62 < 4^3."
+    },
+    {
+      "id": "tight_gain",
+      "declaration": "TR23.finiteCertificate",
+      "source": "lean/TR23.lean",
+      "field": "TR23.FiniteCertificate.tight_gain",
+      "scope": "4^3 < 81."
+    }
+  ],
+  "exact_checks": [
+    {
+      "id": "geometry_checker",
+      "source": "verification/core/verification/check_geometry.py",
+      "function": "verify",
+      "scope": "Rebuilds all 1134 appended-minor equations for P and computes their rational rank 26; checks L(P)P = 0, the three single-mode ranks 3 of P, the fourth-mode rank 2 and balanced ranks (2,2,2) of y, and the Gaussian change of basis from P to 2 cw_2 with determinant -2i.",
+      "limitation": "Only the explicit tensors P, x and y are checked. The equivalence of Lemma 4.1, the open set U and the closed cover are not computations."
+    },
+    {
+      "id": "sparse_exchange_checker",
+      "source": "verification/core/verification/check_exact_upper.py",
+      "function": "main",
+      "scope": "Builds G, S, I, E and the sparse Laurent maps directly; checks Walsh orthogonality, cancellation of every negative-degree coefficient, the 270 constant support terms of P^(boxtimes 3) direct sum C_18, two ten-term cw_8 degenerations, 19 injective tight weights with zero sum on all 54 support triples, the marginal probabilities 1/3 and 1/27, and the integer comparisons giving the strict cutoff.",
+      "limitation": "Finite identities and hypotheses only. Strassen's spectral and tight-support theorems and the entropy-to-subrank step are not computed."
+    },
+    {
+      "id": "dense_exchange_checker",
+      "source": "verification/core/verification/check_certificate.py",
+      "function": "verify",
+      "scope": "Evaluates all 97336 ordered output coefficients of the explicit 73-to-46-dimensional maps on the 88 source terms; checks pole cancellation, the 270 constant target terms, the 54-term tight support, its weights and the marginal counts 18 and 2.",
+      "limitation": "The reading of the coefficient identities as restrictions and the spectral inequality (3.11) are written arguments."
+    },
+    {
+      "id": "dense_cw8_checker",
+      "source": "verification/core/verification/check_certificate.py",
+      "function": "border_check",
+      "scope": "Expands the ten-term cw_8 Laurent identity from the certificate data and compares it with its exact expansion.",
+      "limitation": "Only q = 8. The (q+2)-term identity for other q and the paired-to-diagonal basis change are written proofs."
+    },
+    {
+      "id": "core_cases",
+      "source": "verification/core/components/verification/check_components.py",
+      "function": "check_core",
+      "scope": "For n = 3, 4, 5 and s = 1, -1, 2/3, -1/n: the coefficients of T_(n,s), its three mode ranks n, the one-dimensional intersection K(T_(n,s)) of the three lifted slice images spanned by T_(n,s), and the coefficient relations used in the proof of Lemma 6.2.",
+      "limitation": "Twelve parameter pairs. The lemma for every n >= 3 and every nonzero s is a written proof."
+    },
+    {
+      "id": "diagonal_reference",
+      "source": "verification/core/components/verification/check_components.py",
+      "function": "main",
+      "scope": "For n = 3, 4, 5 the diagonal tensor D_n has kernel K(D_n) of dimension n.",
+      "limitation": "No rank, border-rank or density statement is computed."
+    },
+    {
+      "id": "threshold_cases",
+      "source": "verification/core/components/verification/check_components.py",
+      "function": "check_threshold",
+      "scope": "For n = 3, ..., 12 and n = 25, integer-root certificates give outward rational intervals proving n^n < B_n^n < (n+1)^n, and the premise (n+1)^n > 2 n^n is checked.",
+      "limitation": "Eleven values of n. The inequality for every n >= 3 and the cited speedup theorem are not computations."
+    },
+    {
+      "id": "component_witnesses",
+      "source": "verification/core/components/verification/check_components.py",
+      "function": "check_components",
+      "scope": "In the formats (3,3,3,3), (3,3,3,3,2), (3,2,3,2,3,3), (3,3,3,3,3,3) and (3,3,2,2): mode ranks of every embedded permutation seed x_I, rank 1 across its own triple cut, rank 3 across every different overlapping triple cut, and rank 2 of the two-term tensor g across every nontrivial cut; also rank 9 of the mixed-pair flattening of two disjoint permutation cores.",
+      "limitation": "The printed count is the number of witness triples plus one, not an enumeration of irreducible components. Closedness, density and distinctness of components are written arguments."
+    },
+    {
+      "id": "grouping_example",
+      "source": "verification/core/components/verification/check_components.py",
+      "function": "check_boundary",
+      "scope": "One explicit three-term tensor of format (9,3,2) from a matrix pencil with eigenvalues 1, 2, 3, with mode ranks (3,3,2).",
+      "limitation": "One example. Density, the border-rank bound for all (3,3,2) tensors and irreducibility are written arguments."
+    }
+  ],
+  "numbered_results": [
+    {
+      "label": "thm:main",
+      "environment": "theorem",
+      "number": "1.1",
+      "section": 1,
+      "source": "paper/main.tex",
+      "title": "Reducibility of the sublevel in format (3,3,3,2)",
+      "coverage": "partial_lean",
+      "lean_targets": ["geometry_y_fourth_rank", "geometry_y_outside", "threshold_lower", "threshold_upper"],
+      "exact_checks": ["geometry_checker"],
+      "covered": "Lean proves that the fourth-mode flattening of y has rank 2, that y lies outside X, and the comparisons 27 < 62 < 64. The geometry checker computes the same ranks.",
+      "paper_only": "The inclusion of Y in Z, the membership of x in Y from (1.4), the equality R~(y) = 2, the relatively closed cover, its properness, and reducibility of Y are proved in the paper. The statement is not a Lean theorem."
+    },
+    {
+      "label": "thm:spectrum",
+      "environment": "theorem",
+      "number": "2.1",
+      "section": 2,
+      "source": "paper/main.tex",
+      "title": "Strassen's spectral characterization",
+      "coverage": "cited",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned.",
+      "paper_only": "Cited classical theorem for all complex three-mode tensors, in the formulation of Christandl, Vrana and Zuiddam, Theorem 1.1 and Proposition 1.6. It is an input, not proved in the paper and not formalized."
+    },
+    {
+      "label": "lem:interpolation",
+      "environment": "lemma",
+      "number": "2.2",
+      "section": 2,
+      "source": "paper/main.tex",
+      "title": "Spectral monotonicity under polynomial degenerations",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned.",
+      "paper_only": "The interpolation argument for explicit Laurent degenerations is proved in the paper."
+    },
+    {
+      "label": "thm:tight",
+      "environment": "theorem",
+      "number": "2.3",
+      "section": 2,
+      "source": "paper/main.tex",
+      "title": "Strassen's tight-support theorem",
+      "coverage": "cited",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned. The hypotheses for C_18 are mapped under eq:entropy.",
+      "paper_only": "Cited classical theorem for three-mode tensors with tight support, in the formulation of Christandl, Vrana and Zuiddam, Definition 4.1, Theorem 4.4 and Corollary 4.5. It is an input, not proved in the paper and not formalized."
+    },
+    {
+      "label": "lem:cw-basis",
+      "environment": "lemma",
+      "number": "3.1",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "Paired and small Coppersmith-Winograd tensors",
+      "coverage": "partial_lean",
+      "lean_targets": ["cw_identity", "cw_constant"],
+      "exact_checks": ["sparse_exchange_checker", "dense_cw8_checker"],
+      "covered": "For q = 8, Lean proves that (3.3) equals (3.4) for every nonzero complex t at all 9^3 coordinate triples, with value cw_8 at t = 0. Both exchange checkers expand ten-term cw_8 degenerations.",
+      "paper_only": "The equivalence of C_q and cw_q for every even q, including the paired-C_8 to diagonal cw_8 basis change, the identity for other q, and the spectral bound through Lemma 2.2 are proved in the paper. The formalized Gaussian basis change for P does not replace the C_8 bridge."
+    },
+    {
+      "label": "lem:exchange",
+      "environment": "lemma",
+      "number": "3.2",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "The finite exchange",
+      "coverage": "partial_lean",
+      "lean_targets": ["exchange_group_card", "exchange_set_cards", "exchange_dimensions", "exchange_inner_translation", "exchange_residual_translation", "exchange_shift_free", "exchange_digit_bijection", "exchange_walsh", "exchange_contraction", "exchange_negative", "exchange_constant", "exchange_upper", "permutation_bridge"],
+      "exact_checks": ["sparse_exchange_checker", "dense_exchange_checker"],
+      "covered": "Lean proves the finite group and set identities, Walsh orthogonality, agreement of the dense and sparse contractions, vanishing of every Laurent coefficient of degree below zero or above three, and constant coefficient 64 times that of the target at every output triple. It identifies the main coordinates with those of P^(boxtimes 3).",
+      "paper_only": "Reading these coefficient identities as Laurent-polynomial restrictions of Delta_64 direct sum C_8, and deriving (3.11) from Lemma 2.2 and the additivity and multiplicativity of spectral points, are proved in the paper."
+    },
+    {
+      "label": "lem:appended",
+      "environment": "lemma",
+      "number": "4.1",
+      "section": 4,
+      "source": "paper/main.tex",
+      "title": "Balanced flattenings and the appended-minor matrix",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "Lean proves the coordinate description of L(T) and L(T)T = 0, mapped under eq:L and eq:LT; these are not this equivalence.",
+      "paper_only": "For concise T, the equivalence between membership of W in Z and L(T)S = 0 is proved in the paper. It is not a Lean statement."
+    },
+    {
+      "label": "lem:scalar",
+      "environment": "lemma",
+      "number": "4.2",
+      "section": 4,
+      "source": "paper/main.tex",
+      "title": "Concision and scalar kernel of P",
+      "coverage": "partial_lean",
+      "lean_targets": ["geometry_P_concise", "geometry_P_rank", "geometry_P_kernel"],
+      "exact_checks": ["geometry_checker"],
+      "covered": "Lean proves concision of P, rank L(P) = 26 and ker L(P) = C P. The geometry checker computes the same rank and kernel by rational elimination.",
+      "paper_only": "The identification of Cent(P) with ker L(P), and hence its description by common scalar triples, is proved in the paper."
+    },
+    {
+      "label": "prop:open",
+      "environment": "proposition",
+      "number": "4.3",
+      "section": 4,
+      "source": "paper/main.tex",
+      "title": "The ambient open set forces fourth-mode rank one",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No direct Lean declaration or exact check is assigned. The membership of x in U uses Lemma 4.2.",
+      "paper_only": "Polynomial openness of U in V and the inclusion of Z intersect U in X are proved in the paper. The open-neighbourhood argument is not formalized."
+    },
+    {
+      "label": "lem:flatten",
+      "environment": "lemma",
+      "number": "5.1",
+      "section": 5,
+      "source": "paper/main.tex",
+      "title": "Flattening ranks bound asymptotic rank",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned.",
+      "paper_only": "The Kronecker-power argument for every order and every flattening is proved in the paper."
+    },
+    {
+      "label": "lem:append",
+      "environment": "lemma",
+      "number": "5.2",
+      "section": 5,
+      "source": "paper/main.tex",
+      "title": "Appending a fixed vector",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned.",
+      "paper_only": "Equality of rank and of asymptotic rank after appending a fixed nonzero vector is proved in the paper."
+    },
+    {
+      "label": "prop:components-chart",
+      "environment": "proposition",
+      "number": "6.1",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "The local rank-one chart",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned.",
+      "paper_only": "The chart equality (6.3), the component X of the determinantal locus, the description (6.4) and the isomorphism (6.5) are proved in the paper for every n >= 3 and m >= 2."
+    },
+    {
+      "label": "lem:general-core",
+      "environment": "lemma",
+      "number": "6.2",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "Concision and scalar kernel of the cores",
+      "coverage": "paper_and_exact_checks",
+      "lean_targets": [],
+      "exact_checks": ["core_cases"],
+      "covered": "Twelve cases T_(n,s) with n = 3, 4, 5 are checked exactly: concision, the scalar kernel and the coefficient relations.",
+      "paper_only": "The statement for every n >= 3 and every nonzero complex s is proved in the paper."
+    },
+    {
+      "label": "lem:general-core-rank",
+      "environment": "lemma",
+      "number": "6.3",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "Rank and border rank of the cores",
+      "coverage": "paper_and_exact_checks",
+      "lean_targets": [],
+      "exact_checks": ["diagonal_reference"],
+      "covered": "For n = 3, 4, 5 the kernel K(D_n) of the diagonal tensor has dimension n, the value used in the border-rank obstruction.",
+      "paper_only": "R(T_(n,s)) = border rank(T_(n,s)) = n+1 for every n >= 3 and nonzero s, including the closedness and density argument on the concise open set, is proved in the paper."
+    },
+    {
+      "label": "prop:components-core",
+      "environment": "proposition",
+      "number": "6.4",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "Asymptotic-rank bound for the cores",
+      "coverage": "paper_and_exact_checks",
+      "lean_targets": [],
+      "exact_checks": ["threshold_cases"],
+      "covered": "The endpoint inequalities for B_n and the speedup premise R > 2N are checked exactly for eleven values of n.",
+      "paper_only": "n < B_n < n+1 for every n >= 3 and R~(T_(n,s)) <= B_n are proved in the paper, using the automatic three-direction speedup theorem of Alman and Li (arXiv version 2, Theorem 6.1) as a cited input applied to three-mode tensors."
+    },
+    {
+      "label": "thm:components-count",
+      "environment": "theorem",
+      "number": "6.5",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "Lower bound for the number of components",
+      "coverage": "paper_and_exact_checks",
+      "lean_targets": [],
+      "exact_checks": ["component_witnesses"],
+      "covered": "Witness flattening ranks are checked exactly in five formats.",
+      "paper_only": "The bound binom(t_n,3)+1 for every n >= 3, k >= 4 and d_i >= 2, its version for cuberoot(62) <= a < 4, distinctness of the chosen components and the projection argument are proved in the paper. The cuberoot(62) interval uses Lemma 4.2 and (1.4)."
+    },
+    {
+      "label": "prop:components-grouping",
+      "environment": "proposition",
+      "number": "6.6",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "The grouped three-mode sublevel",
+      "coverage": "paper_and_exact_checks",
+      "lean_targets": [],
+      "exact_checks": ["grouping_example"],
+      "covered": "One explicit (9,3,2) tensor from a pencil with distinct eigenvalues is checked exactly.",
+      "paper_only": "The equality (6.13) for every 3 <= a < 4 and irreducibility of the rank-at-most-three 9-by-6 determinantal variety are proved in the paper."
+    },
+    {
+      "label": "prop:components-finite-values",
+      "environment": "proposition",
+      "number": "6.7",
+      "section": 6,
+      "source": "paper/sections/components.tex",
+      "title": "Finite values and bounded component counts",
+      "coverage": "paper_only",
+      "lean_targets": [],
+      "exact_checks": [],
+      "covered": "No Lean declaration or exact check is assigned.",
+      "paper_only": "The equivalence between finiteness of asymptotic-rank values in a fixed format and a uniform bound on component counts of its sublevels is proved in the paper."
+    }
+  ],
+  "supporting_steps": [
+    {
+      "label": "eq:Pxy",
+      "section": 1,
+      "source": "paper/main.tex",
+      "title": "The witnesses P, x and y",
+      "lean_targets": ["geometry_x_fourth_rank", "geometry_y_balanced_rank"],
+      "exact_checks": ["geometry_checker"],
+      "covered": "Lean proves that x has fourth-mode rank 1 and that every balanced flattening of y has rank 2. The geometry checker computes the balanced ranks of y.",
+      "paper_only": "Membership of x and y in Y uses (1.4), Lemma 5.1 and Lemma 5.2 and is proved in the paper."
+    },
+    {
+      "label": "eq:cw-polynomial",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "Expansion of the cw_q degeneration",
+      "lean_targets": ["cw_identity", "cw_constant"],
+      "exact_checks": ["sparse_exchange_checker", "dense_cw8_checker"],
+      "covered": "The case q = 8, at every nonzero complex t and every coordinate triple.",
+      "paper_only": "Every other even q is treated only in the paper."
+    },
+    {
+      "label": "eq:set-sizes",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "The sets S, I and E",
+      "lean_targets": ["exchange_group_card", "exchange_set_cards", "exchange_inner_translation", "exchange_residual_translation", "exchange_shift_free"],
+      "exact_checks": ["sparse_exchange_checker", "dense_exchange_checker"],
+      "covered": "Lean proves |G| = 64, |S| = 27, |I| = 8, |E| = 18, invariance of I and E under translation by b, and absence of fixed points.",
+      "paper_only": "No further claim of this display is left to the paper."
+    },
+    {
+      "label": "eq:walsh",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "Walsh decomposition of the group tensor",
+      "lean_targets": ["exchange_walsh"],
+      "exact_checks": ["sparse_exchange_checker"],
+      "covered": "Lean proves the character-sum identity with the integer normalization 64; division by 64 gives (3.8).",
+      "paper_only": "The resulting rank bound R(K_G) <= 64 is drawn in the paper."
+    },
+    {
+      "label": "eq:exchange-target",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "Constant coefficient of the exchange",
+      "lean_targets": ["exchange_dimensions", "exchange_digit_bijection", "exchange_contraction", "exchange_negative", "exchange_constant", "exchange_upper", "permutation_bridge"],
+      "exact_checks": ["sparse_exchange_checker", "dense_exchange_checker"],
+      "covered": "Lean proves that the combined output has no coefficient of degree below zero or above three, and that its constant coefficient is 64 times P^(boxtimes 3) direct sum C_18.",
+      "paper_only": "The interpretation as a restriction of Delta_64 direct sum C_8 is proved in the paper."
+    },
+    {
+      "label": "eq:entropy",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "Tight support of C_18 and its marginals",
+      "lean_targets": ["exchange_tight_dimension", "exchange_tight_injective", "exchange_tight_support", "exchange_tight_sum", "exchange_tight_marginals"],
+      "exact_checks": ["sparse_exchange_checker", "dense_exchange_checker"],
+      "covered": "Lean proves that the 19 weights are injective, sum to zero on all 54 support triples, and give marginal counts 18 at the zero coordinate and 2 elsewhere.",
+      "paper_only": "The entropy evaluation exp H = 3 cuberoot(81) and the bound from Theorem 2.3 are written calculations."
+    },
+    {
+      "label": "eq:phiP",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "The uniform spectral estimate",
+      "lean_targets": ["tight_gain"],
+      "exact_checks": ["sparse_exchange_checker", "dense_exchange_checker"],
+      "covered": "Lean proves 4^3 < 81, which gives 3 cuberoot(81) > 12 and hence 74 - 3 cuberoot(81) < 62. Both exchange checkers verify integer forms of this comparison.",
+      "paper_only": "The substitution into (3.11) and the maximum over spectral points in Theorem 2.1 are in the paper."
+    },
+    {
+      "label": "eq:threshold",
+      "section": 3,
+      "source": "paper/main.tex",
+      "title": "The threshold interval",
+      "lean_targets": ["threshold_lower", "threshold_upper"],
+      "exact_checks": ["sparse_exchange_checker"],
+      "covered": "Lean proves 27 < 62 < 64. The sparse checker verifies 62 < 64.",
+      "paper_only": "Taking cube roots gives 3 < cuberoot(62) < 4."
+    },
+    {
+      "label": "eq:L",
+      "section": 4,
+      "source": "paper/main.tex",
+      "title": "The appended-minor matrix L(T)",
+      "lean_targets": ["geometry_rows", "geometry_minor_identity"],
+      "exact_checks": ["geometry_checker"],
+      "covered": "Lean proves that the 126 four-row choices form a complete enumeration and that, for all complex T and S, every coordinate of L(T)S is the corresponding appended determinant.",
+      "paper_only": "The statement that every entry of L(T) is a homogeneous cubic in the coordinates of T is read off in the paper."
+    },
+    {
+      "label": "eq:LT",
+      "section": 4,
+      "source": "paper/main.tex",
+      "title": "The universal kernel vector",
+      "lean_targets": ["geometry_self_kernel"],
+      "exact_checks": ["geometry_checker"],
+      "covered": "Lean proves L(T)T = 0 for every complex T; the checker verifies L(P)P = 0.",
+      "paper_only": "No further claim of this display is left to the paper."
+    },
+    {
+      "label": "sec:verification",
+      "section": 7,
+      "source": "paper/main.tex",
+      "title": "Supplementary Gaussian change of basis",
+      "lean_targets": ["geometry_basis_determinant", "geometry_basis_nonsingular", "geometry_basis_image"],
+      "exact_checks": ["geometry_checker"],
+      "covered": "Lean proves that the Gaussian matrix with determinant -2i takes P to 2 cw_2 in all three modes. The paper records this identity as supplementary; it is not needed in the geometric argument.",
+      "paper_only": "It does not replace the paired-C_8 to diagonal cw_8 basis change in Lemma 3.1."
+    }
+  ]
+}

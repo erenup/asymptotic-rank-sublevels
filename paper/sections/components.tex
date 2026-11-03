@@ -1,0 +1,512 @@
+\section{Component growth and a boundary under grouping}
+\label{sec:components}
+
+For complex vector spaces $V_1,\ldots,V_k$ and a real $a\geq0$, write
+\[
+ Z_a(V_1,\ldots,V_k)
+   =\{T\in V_1\otimes\cdots\otimes V_k:\AR(T)\leq a\}.
+\]
+These are the full sublevels, which are Zariski closed by
+\cite[Theorem~1.2]{CHNVZ2024}. Ranks and asymptotic ranks always refer
+to the displayed factors. Grouping a collection of factors for a matrix
+flattening does not change this convention.
+
+\subsection{The local rank-one chart in general dimension}
+\label{sec:components-chart}
+
+Let $A,B,C$ have the same dimension $n\geq3$, put $W=A\otimes B\otimes C$,
+and let $D$ have dimension $m\geq2$. For $T\in W$, set
+\[
+ E_{AB}(T)=\im(C^*\longrightarrow A\otimes B),
+\]
+and define $E_{AC}(T)$ and $E_{BC}(T)$ in the same way. Using the
+natural permutations of tensor factors, define
+\begin{equation}\label{eq:components-K}
+ K(T)=(E_{AB}(T)\otimes C)\cap(E_{AC}(T)\otimes B)
+                    \cap(A\otimes E_{BC}(T))\subseteq W.
+\end{equation}
+Thus $T\in K(T)$, and $T$ is concise precisely when the three
+pair-image spaces have dimension $n$.
+
+The appended-minor construction of Section~\ref{sec:geometry} extends
+without change: to each $n^2$-by-$n$ flattening of $T$, append each
+column of the corresponding flattening of a variable $S$, and take
+all $(n+1)$-row determinants. Their coefficients in $S$ form a
+polynomial matrix $L_n(T)$ with $n^3$ columns. Repeated columns give
+$L_n(T)T=0$ for every $T$, and on the concise locus one has
+\[
+ \ker L_n(T)=K(T).
+\]
+Indeed, a full-rank $n$-column matrix acquires no additional rank
+on appending a column exactly when that column lies in its image.
+Consequently
+\begin{equation}\label{eq:components-Omega}
+ \Omega_n=\{T\in W:T\text{ is concise},\ \rank L_n(T)\geq n^3-1\}
+\end{equation}
+is Zariski open, and $K(T)=\C T$ for every $T\in\Omega_n$.
+
+Choose a basis $d_0,\ldots,d_{m-1}$ of $D$ and write
+$F=\sum_{j=0}^{m-1}T_j\otimes d_j$. Define
+\[
+ \begin{split}
+ \mathcal F_n={}&\{F:\rank F_{AB\mid CD},\ \rank F_{AC\mid BD},
+                          \ \rank F_{BC\mid AD}\leq n\},\\
+ X={}&\{F:\rank F_{ABC\mid D}\leq1\},\qquad
+ U=\{F:T_0\in\Omega_n\}.
+ \end{split}
+\]
+Here the first line requires each of the three ranks to be at most $n$.
+
+\begin{proposition}\label{prop:components-chart}
+The full-ambient open set $U$ satisfies
+\begin{equation}\label{eq:components-chart-equality}
+ \mathcal F_n\cap U=X\cap U.
+\end{equation}
+If $\Omega_n\ne\varnothing$, then $X$ is an irreducible component of
+$\mathcal F_n$ of dimension $n^3+m-1$. In the four-factor rank convention
+$(A,B,C,D)$, for every $a\geq0$ one has
+\begin{equation}\label{eq:components-sublevel-X}
+ Z_a(A,B,C,D)\cap X
+   =\{T\otimes v:T\in Z_a(A,B,C),\ v\in D\}.
+\end{equation}
+For $0\leq a<n+1$, its intersection with $U$ is isomorphic to
+\begin{equation}\label{eq:components-sublevel-chart}
+ \bigl(Z_a(A,B,C)\cap\Omega_n\bigr)\times\mathbb A^{m-1}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Suppose $F\in U$. The $AB\mid CD$ flattening concatenates the columns
+of all the $T_j$, while the first slice already has an $n$-dimensional
+$AB$-image. This flattening has rank at most $n$ if and only if
+$E_{AB}(T_j)\subseteq E_{AB}(T_0)$ for every $j$. The other two balanced
+flattenings give the corresponding conditions on $AC$ and $BC$.
+Therefore $F\in\mathcal F_n$ precisely when every $T_j$ belongs to
+$K(T_0)=\C T_0$, which is precisely $F\in X$. Conversely, every
+$T\otimes v$ has each balanced rank at most $n$, so $X\subseteq\mathcal F_n$.
+This proves~\eqref{eq:components-chart-equality}.
+
+The locus $X$ is the rank-at-most-one variety of $n^3$-by-$m$ matrices.
+It is closed by its two-by-two minors and irreducible as the image of
+$W\times D$ under $(T,v)\mapsto T\otimes v$. Its dimension is
+$n^3+m-1$: on a chart with a chosen nonzero matrix entry, a rank-one
+matrix is determined by its corresponding row and column, with their
+common entry counted once. If an irreducible closed subset $C$ of
+$\mathcal F_n$ contains $X$, then $C\cap U$ is nonempty when
+$\Omega_n\ne\varnothing$. It is dense in $C$, and
+\eqref{eq:components-chart-equality} places it in the closed subset
+$X$. Hence $C=X$, proving the component assertion.
+
+For $v\ne0$, Lemma~\ref{lem:append} gives
+$\AR(T\otimes v)=\AR(T)$; the zero tensor is covered by taking $T=0$.
+This proves~\eqref{eq:components-sublevel-X}. If $a<n+1$,
+Lemma~\ref{lem:flatten} and integrality give
+$Z_a(A,B,C,D)\subseteq\mathcal F_n$. The isomorphism in
+\eqref{eq:components-sublevel-chart} is
+\[
+ (T,\lambda_1,\ldots,\lambda_{m-1})
+   \longmapsto T\otimes\left(d_0+\sum_{j=1}^{m-1}\lambda_jd_j\right).
+\]
+Its inverse reads the first slice $T\ne0$ and the unique scalar multiples
+of it in the other slices. Those scalars are regular on each chart on
+which a selected coordinate of $T$ is nonzero, and these expressions
+agree on overlaps. This also proves the claimed isomorphism globally
+on the indicated open subset.
+\end{proof}
+
+The component assertion concerns the determinantal locus $\mathcal F_n$;
+it does not assert that the whole of $X$ lies in an asymptotic-rank
+sublevel. Equation~\eqref{eq:components-sublevel-X} retains the actual
+three-mode sublevel. The exact sublevel identifications above use four
+factors, with $D$ a single factor. When $D$ abbreviates several original
+factors below, only the flattening statement
+\eqref{eq:components-chart-equality} is used.
+
+\subsection{Scalar-kernel cores in every dimension}
+\label{sec:general-cores}
+
+In this subsection $A=B=C=\C^n$, and $K(T)$ is the intersection
+of lifted two-mode images defined above. We write $\underline{\R}(T)$
+for border rank: the least integer $r$ for which $T$ belongs to the
+Zariski closure of the rank-at-most-$r$ locus.
+
+For an integer $n\geq3$ and $s\in\C\setminus\{0\}$, put
+\begin{equation}\label{eq:general-core}
+ w=\sum_{i=1}^n e_i,
+ \qquad T_{n,s}=\sum_{i=1}^n e_i\otimes e_i\otimes e_i
+                    +s\,w\otimes w\otimes w.
+\end{equation}
+
+\begin{lemma}\label{lem:general-core}
+For every $n\geq3$ and every nonzero complex $s$, the tensor
+$T_{n,s}$ is concise and $K(T_{n,s})=\C T_{n,s}$.
+\end{lemma}
+
+\begin{proof}
+Its slices in any mode are $E_{ii}+sJ$, where $J$ is the all-ones
+matrix. A linear relation among these slices has the form
+\[
+ \operatorname{diag}(x_1,\ldots,x_n)
+                      +s\Bigl(\sum_i x_i\Bigr)J=0.
+\]
+An off-diagonal entry gives $\sum_i x_i=0$, and the diagonal entries
+then give $x_i=0$ for every $i$. This proves concision in each mode.
+
+Let $S\in K(T_{n,s})$. Every matrix in each two-mode image is
+symmetric, so the three lifted-image conditions make $S$ invariant
+under all permutations of its indices. In the slice with third
+index $k$, write $q_k$ for the common off-diagonal entry. Expressing
+this slice in the basis $E_{ii}+sJ$ gives
+\[
+ q_k=s\left(\sum_i S_{iik}-nq_k\right).
+\]
+For distinct $j,k$, choose $i$ different from both. Symmetry gives
+$S_{ijk}=S_{ikj}$, hence $q_k=q_j$. Let their common value be $q$.
+For $i\ne k$, symmetry also gives $S_{iik}=S_{iki}=q$.
+Writing $b_k=S_{kkk}$, the displayed relation becomes
+$q=s(b_k-q)$, so $b_k=(1+1/s)q$. Thus the coefficients of $S$ are
+$q$ off the full diagonal and $(1+1/s)q$ on it, which means
+$S=(q/s)T_{n,s}$. The reverse inclusion follows from
+$T_{n,s}\in K(T_{n,s})$.
+\end{proof}
+
+\begin{lemma}\label{lem:general-core-rank}
+For every $n\geq3$ and every nonzero complex $s$,
+\begin{equation}\label{eq:general-core-ranks}
+ \R(T_{n,s})=\underline{\R}(T_{n,s})=n+1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Equation~\eqref{eq:general-core} gives the upper bound $n+1$ for
+both ranks. A concise tensor of rank at most $n$ has rank exactly
+$n$, since each single-mode flattening has rank $n$. In an
+$n$-term decomposition, its factors span each of the three
+$n$-dimensional modes and hence form bases. It is therefore an
+invertible local transform of
+\[
+ D_n=\sum_{i=1}^n e_i\otimes e_i\otimes e_i.
+\]
+For $D_n$, the lifted-image conditions force all three indices to
+coincide, so $K(D_n)$ is the $n$-dimensional span of its diagonal
+summands. Invertible local maps carry $K(T)$ to the corresponding
+kernel for the transformed tensor. Consequently every concise
+tensor of rank at most $n$ has kernel dimension $n$.
+
+On the concise open subset, the appended-minor construction of
+Section~\ref{sec:geometry} works with $n^2$-by-$n$ flattenings:
+append each column of a variable tensor and impose every
+$(n+1)$-row determinant. The resulting polynomial matrix $L_n(T)$
+has $n^3$ columns and satisfies $\ker L_n(T)=K(T)$ there.
+The condition $\dim K(T)\geq n$ is therefore relatively closed,
+being the condition $\rank L_n(T)\leq n^3-n$.
+Rank-at-most-$n$ tensors remain dense in their border-rank closure
+after restriction to this open subset. Every concise tensor of
+border rank at most $n$ must consequently satisfy
+$\dim K(T)\geq n$. Lemma~\ref{lem:general-core} excludes this
+possibility for $T_{n,s}$, whose kernel has dimension one.
+Thus $\underline{\R}(T_{n,s})>n$, proving both equalities.
+\end{proof}
+
+\begin{proposition}\label{prop:components-core}
+For every integer $n\geq3$, define
+\begin{equation}\label{eq:components-Bn}
+ B_n=\left((n+1)^n+n^{2n/3}
+            -\bigl((n+1)^n-n^n\bigr)^{2/3}\right)^{1/n},
+\end{equation}
+where the roots are positive real roots. Then $n<B_n<n+1$, and
+for every $s\in\C\setminus\{0\}$ the tensor $T_{n,s}$ is concise,
+with
+\[
+ K(T_{n,s})=\C T_{n,s},\qquad
+ \R(T_{n,s})=\underline{\R}(T_{n,s})=n+1,\qquad
+ \AR(T_{n,s})\leq B_n.
+\]
+\end{proposition}
+
+\begin{proof}
+The concision, kernel and exact-rank assertions are
+Lemmas~\ref{lem:general-core} and~\ref{lem:general-core-rank}.
+For the asymptotic bound we use the automatic three-direction
+form of the speedup theorem of Alman and Li \cite[Theorem~6.1]{AlmanLi2026v2}. For a tensor
+$Q$ of format $N\times N\times N$ and an integer ordinary-rank
+upper bound $R>2N$, its automatic clause gives
+\begin{equation}\label{eq:automatic-speedup}
+ \AR(Q)\leq R+N^{2/3}-(R-N)^{2/3}<R.
+\end{equation}
+Here the auxiliary matrix-rank bound is $N$ in each of the three
+directions, which is automatic for $N$-by-$N$ matrices. We apply
+this theorem only to three-mode tensors.
+
+Take $Q=T_{n,s}^{\boxtimes n}$, $N=n^n$ and $R=(n+1)^n$.
+Taking the grouped $n$th power of the explicit $(n+1)$-term
+decomposition~\eqref{eq:general-core} gives $\R(Q)\leq R$. The binomial expansion shows
+\[
+ (1+1/n)^n
+   =2+\sum_{j=2}^n\binom nj n^{-j}>2,
+\]
+so $R>2N$. Grouped powers satisfy
+$\AR(T^{\boxtimes n})=\AR(T)^n$, directly from the defining
+limit~\eqref{eq:asymrank}. Substitution in
+\eqref{eq:automatic-speedup} yields
+$\AR(T_{n,s})^n\leq B_n^n$.
+
+For the endpoints put $z=R-N>N>1$. Since
+$N^{2/3}<z^{2/3}$, one has $B_n^n<R$. Also
+\[
+ B_n^n-N=z-z^{2/3}+N^{2/3}>0.
+\]
+Taking positive $n$th roots gives $n<B_n<n+1$.
+\end{proof}
+
+Thus these cores are available throughout the interval
+$B_n\leq a<n+1$: the lower endpoint is included because the
+asymptotic-rank estimate is non-strict. The upper endpoint is
+excluded because the component argument uses integral flattening
+ranks bounded above by $a<n+1$. No exact value of
+$\AR(T_{n,s})$ is asserted.
+For dimension three, the permutation tensor $P$ supplies the
+separate interval $\sqrt[3]{62}\leq a<4$: its scalar kernel is
+Lemma~\ref{lem:scalar}, and its strict cost and threshold bounds
+are~\eqref{eq:strict-cost} and~\eqref{eq:threshold}.
+
+\subsection{A lower bound for the number of components}
+\label{sec:components-count}
+
+\begin{theorem}\label{thm:components-count}
+Let $n\geq3$ and $k\geq4$ be integers, let $d_1,\ldots,d_k\geq2$, and put
+\[
+ t_n=\#\{i:d_i\geq n\}.
+\]
+For every real $a$ satisfying $B_n\leq a<n+1$, with $B_n$ as in
+\eqref{eq:components-Bn}, the variety
+$Z_a(\C^{d_1},\ldots,\C^{d_k})$ has at least
+\begin{equation}\label{eq:components-count}
+                         \binom{t_n}{3}+1
+\end{equation}
+irreducible components. The same bound with $t_3$ holds for every
+$\sqrt[3]{62}\leq a<4$.
+\end{theorem}
+
+\begin{proof}
+First suppose that every $d_i\leq n$, and call a factor active if its
+dimension is $n$. For the first interval, choose any nonzero $s$ and
+put $Q=T_{n,s}$ from Proposition~\ref{prop:components-core}. For the
+second interval put $n=3$ and $Q=P$. Lemma~\ref{lem:scalar} and
+\eqref{eq:strict-cost} supply its scalar kernel and cost bound. Thus
+in both cases $Q$ is concise, $K(Q)=\C Q$, and
+\[
+                         \AR(Q)\leq a<n+1.
+\]
+In particular $a\geq n\geq3$ by Lemma~\ref{lem:flatten}.
+
+For each triple $I$ of active factors, let $x_I$ be $Q$ on those
+factors and a fixed basis vector $e_0$ on every other factor.
+Repeated application of Lemma~\ref{lem:append} gives
+$\AR(x_I)=\AR(Q)$, so $x_I\in Z_a$.
+For linear-algebra purposes write
+$D=\bigotimes_{j\notin I}\C^{d_j}$ and choose its product basis.
+The complementary all-zero coordinate selects the first slice $Q$.
+Proposition~\ref{prop:components-chart} supplies a full-ambient open
+neighborhood $U_I$ of $x_I$. Every bipartition rank on $Z_a$ is an
+integer at most $n$, so
+\begin{equation}\label{eq:components-local}
+ Z_a\cap U_I\subseteq X_I,
+ \qquad X_I=\{F:\rank F_{I\mid I^c}\leq1\}.
+\end{equation}
+This use of $D$ does not merge any modes in the definition of $Z_a$.
+
+The closed affine variety $Z_a$ has finitely many irreducible components.
+Choose a component $C_I$ containing $x_I$. Its nonempty relatively
+open subset $C_I\cap U_I$ is dense in $C_I$ and lies in the closed
+locus $X_I$. It follows that
+\begin{equation}\label{eq:components-containment}
+                              C_I\subseteq X_I.
+\end{equation}
+No uniqueness of a component through $x_I$ is needed.
+
+There is a useful stronger constraint: every single-mode rank outside
+$I$ is at most one everywhere on $C_I$. Fix $i\in I$. The locus on
+$C_I$ where the $i$th single-mode rank is $n$ is nonempty, since it
+contains $x_I$, and is open, since that mode has dimension $n$.
+At any point $F$ of this open set, \eqref{eq:components-containment}
+gives a nonzero factorization $F=A_I\otimes B_{I^c}$. For $j\notin I$,
+the Kronecker-product rank formula gives
+\[
+ \rank F_{\{i,j\}\mid\{i,j\}^c}
+      =r_i(A_I)r_j(B_{I^c})=n\,r_j(B_{I^c})\leq n.
+\]
+Here $r_j$ denotes the appropriate single-mode flattening rank, and
+the last inequality follows from $F\in Z_a$. Thus $r_j(F)=1$ on
+that open set. The condition $r_j(F)\leq1$ is closed, so density
+extends it to all of $C_I$. If $I\ne J$, choose $j\in J\setminus I$.
+Then $x_J$ has $j$th rank $n$, whereas every point of $C_I$ has
+$j$th rank at most one. Therefore the chosen components $C_I$ are
+pairwise distinct, whether or not the triples overlap.
+
+Every factor has dimension at least two. The tensor
+\[
+ g=\bigotimes_{i=1}^k e_0+\bigotimes_{i=1}^k e_1
+\]
+has rank and asymptotic rank two: its displayed decomposition gives
+the upper bound, and every nontrivial bipartition has matrix rank two.
+Thus $g\in Z_a$. Since $k\geq4$, each $I\mid I^c$ is nontrivial,
+so $g\notin X_I$ for every active triple. A component containing $g$
+is different from all the $C_I$, proving~\eqref{eq:components-count}
+in these dimensions. If there are no active triples, the bound is
+one and follows from the same nonempty sublevel.
+
+For arbitrary $d_i\geq2$, choose coordinate projections
+\[
+ p_i:\C^{d_i}\longrightarrow\C^{\min(d_i,n)}
+\]
+with coordinate inclusions $j_i$ as sections. The tensor-product maps
+$p=\bigotimes_i p_i$ and $j=\bigotimes_i j_i$ are local maps for the
+original $k$ factors and satisfy $pj=1$. Rank is nonincreasing under
+local maps in every power. Consequently $p$ maps the larger sublevel
+onto the smaller one, and $j$ preserves asymptotic rank on the embedded
+copy.
+
+If the larger sublevel has components $C_1,\ldots,C_s$, the closures
+of $p(C_1),\ldots,p(C_s)$ in the smaller sublevel are irreducible
+closed sets covering it. Any irreducible component of the smaller
+sublevel lies in one of those finitely many closed sets, and maximality
+makes it equal to that set. The smaller sublevel therefore has at most
+$s$ components. Its active-factor count is exactly $t_n$, so its
+established lower bound gives the same bound in the original dimensions.
+\end{proof}
+
+When all $d_i\geq n$, this lower bound is $\binom{k}{3}+1$.
+In particular, four factors of dimensions at least three have at least
+five components for every $\sqrt[3]{62}\leq a<4$. The counts are lower
+bounds, not complete lists of components. Their unboundedness varies
+the tensor format; it makes no claim of infinitely many asymptotic-rank
+values in a fixed format. The same section-and-retraction argument
+also propagates reducibility when additional factors are appended
+using fixed nonzero vectors.
+
+\subsection{The grouped three-mode sublevel}
+\label{sec:components-grouping}
+
+\begin{proposition}\label{prop:components-grouping}
+For every real $3\leq a<4$,
+\begin{equation}\label{eq:components-grouped}
+ Z_a(\C^9,\C^3,\C^2)
+   =\{F:\rank F_{\C^9\mid\C^3\otimes\C^2}\leq3\}.
+\end{equation}
+This is the irreducible rank-at-most-three determinantal variety of
+$9$-by-$6$ matrices.
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{lem:flatten} gives the forward inclusion, using integrality
+and $a<4$. Conversely, a tensor with this flattening rank at most three
+has its first-mode support in a subspace of dimension at most three.
+After compression and padding within that mode, it suffices to consider
+format $(3,3,2)$.
+
+Represent such a tensor by a pair of three-by-three matrices $(A,B)$.
+The set where $A$ is invertible and $A^{-1}B$ has three distinct
+eigenvalues is nonempty, as shown by $(I,\operatorname{diag}(0,1,2))$.
+It is Zariski open: on $\det A\ne0$, distinct eigenvalues are the
+nonvanishing of the characteristic discriminant. Thus it is dense in
+the affine space of all pairs. Invertible left and right changes of
+basis reduce every such pair to
+\[
+                  (I,\operatorname{diag}(\lambda_1,\lambda_2,\lambda_3)).
+\]
+The corresponding tensor is a sum of the three decomposable tensors
+$e_i\otimes e_i\otimes(d_0+\lambda_i d_1)$. Its rank is at most three.
+Taking Zariski closures proves that every tensor of format $(3,3,2)$
+has border rank at most three and hence asymptotic rank at most three.
+The latter implication also follows directly from closedness of $Z_3$:
+that closed set contains every rank-at-most-three tensor and therefore
+its closure. Local padding back to $(9,3,2)$ cannot increase the
+asymptotic rank. Since $a\geq3$, this proves the reverse inclusion.
+
+Every $9$-by-$6$ matrix of rank at most three is a product of a
+$9$-by-$3$ matrix and a $3$-by-$6$ matrix. Hence the determinantal
+variety is the image of an irreducible affine space under matrix
+multiplication and is irreducible.
+\end{proof}
+
+Grouping any two of the three-dimensional modes of $(3,3,3,2)$ gives
+$(9,3,2)$. Throughout $\sqrt[3]{62}\leq a<4$, the full four-mode
+sublevel is reducible by Theorem~\ref{thm:components-count}, whereas
+the full grouped three-mode sublevel is irreducible by
+Proposition~\ref{prop:components-grouping}. This does not assert
+surjectivity from the ungrouped sublevel onto the grouped one and
+does not settle the general three-mode irreducibility question.
+
+\subsection{Scope and the remaining three-mode questions}
+\label{sec:components-scope}
+
+The component lower bounds concern the full sublevels and allow the
+format to vary. They neither classify all components nor produce
+infinitely many asymptotic-rank values in a single fixed format.
+The scalar-kernel argument uses three balanced flattenings and a
+fourth factor containing simultaneous slices. The grouped example
+shows explicitly why those constraints do not transfer to three
+modes. A reducible linear section would also be insufficient to
+prove reducibility of an ambient sublevel: the irreducible quadric
+$xy=z^2$ has the reducible section $z=0$.
+
+The full three-mode asymptotic-rank conjecture asserts
+$\AR(T)=\max_i r_i(T)$, where $r_i(T)$ are the single-mode ranks,
+after compression to those mode supports. Under this conjecture,
+for every $a\geq0$ the sublevel is the subspace variety defined by
+\[
+ r_i(T)\leq\min\{\dim V_i,\lfloor a\rfloor\},\qquad i=1,2,3.
+\]
+It is irreducible: choose the three support spaces in the product
+of the corresponding Grassmannians and then a tensor in their
+tensor product. The resulting vector bundle has irreducible total
+space and maps onto the subspace variety. When the bound is zero,
+the variety is $\{0\}$. This conditional implication is already
+recorded in \cite[Section~5]{CHNVZ2024}. Thus three-mode
+reducibility would refute the full conjecture. It would not by
+itself prove that the matrix-multiplication exponent $\omega$ is
+greater than two, or refute the narrower conjecture for concise
+tight cubic tensors \cite[Conjectures~3 and~8]{BjorklundKaski2023}.
+
+\begin{proposition}\label{prop:components-finite-values}
+In a fixed complex tensor format, finiteness of the set of
+asymptotic-rank values is equivalent to a uniform bound on the
+number of irreducible components of all its sublevels.
+\end{proposition}
+
+\begin{proof}
+Finitely many values give finitely many sublevels, each a closed
+affine variety with finitely many irreducible components.
+Conversely, suppose all sublevels in an ambient affine space of
+dimension $N$ have at most $C$ components. Associate to each one
+its vector of component counts in dimensions $N,N-1,\ldots,0$.
+For a strict inclusion of two closed subsets these vectors
+strictly increase lexicographically. Indeed, until the first
+dimension at which their components differ, all higher-dimensional
+components coincide. An old component in the next dimension
+cannot be absorbed by one of those common higher-dimensional
+components, and containment in a new component of equal dimension
+forces equality. Thus all old components of that dimension persist,
+and at least one new component is added. If there were no differing
+dimension, the two closed subsets would be equal.
+
+There are only $\binom{C+N+1}{N+1}$ nonnegative integer vectors of
+length $N+1$ with coordinate sum at most $C$. Consequently every
+strict chain of sublevels has uniformly bounded finite length.
+Distinct attained asymptotic-rank values give distinct, totally
+ordered sublevels, so there are only finitely many such values.
+\end{proof}
+
+No uniform component bound in a fixed format is supplied by the
+component-growth theorem. Determining the three-mode components in
+the local product chart, finding a three-mode replacement for the
+balanced-flattening argument, and controlling components over all
+thresholds of a fixed format remain separate questions.
+
+The arguments in this section are written proofs with the cited
+closedness and asymptotic-speedup inputs. The finite certificate
+described in Section~\ref{sec:verification} supports the original
+permutation-tensor construction. It does not formalize the general
+scalar cores, the component-growth theorem, the grouped
+determinantal description, or the fixed-format proposition above.

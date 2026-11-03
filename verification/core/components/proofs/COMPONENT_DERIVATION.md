@@ -1,0 +1,19 @@
+# component derivation
+
+Fix k>=4 and complex spaces V_i of dimensions at least two. Initially each dimension is either two or three. Let t be the number of three-dimensional factors. Set a_0=62^(1/3), and let a_0<=a<4. Let Y_a be the asymptotic-rank sublevel. The established polynomial characterization makes Y_a Zariski closed. We claim that Y_a has at least binomial(t,3)+1 irreducible components. After proof, local inclusion/projection propagate the component-count lower bound to all dimensions at least two, with t the number of dimensions at least three.
+
+For each triple I of three-dimensional factors, put x_I=P on those factors and fixed e_0 on every other factor. The established bound Rtilde(P)<a_0 puts x_I in Y_a. Let X_I be the closed locus of rank at most one across the bipartition I | I^c.
+
+Group I^c into a single space D. Take its basis coordinate functional selecting the product e_0. The selected first slice T of any tensor lies in (C^3)^tensor3. Impose that T is concise and has K(T)=CT, where K(T) is the intersection of the lifted two-factor images for all three choices of the missing active factor. These are open conditions, expressed by the existing appended-minor matrix having rank at least 26 and the three single-mode flattenings having rank three. This gives a full-ambient open U_I containing x_I.
+
+Every bipartition flattening of every element of Y_a has integer rank at most three. In particular, for each of the three active pairs, the image of all D-slices is contained in the image of the first slice, since that first slice already has rank three. Thus every other slice belongs to K(T)=CT, and the full tensor lies in X_I. Consequently Y_a intersect U_I is contained in X_I. Every irreducible component C of Y_a containing x_I is contained in X_I: its nonempty open intersection with U_I is dense in C, and X_I is closed. Choose one such component C_I for each I.
+
+These chosen components are pairwise distinct. If I and J overlap but differ, x_I is not in X_J: the nontrivial bipartition of the three active factors of P has rank three. Therefore C_I cannot equal C_J, since C_J is contained in X_J.
+
+If I and J are disjoint, suppose C_I=C_J=C. Then C is contained in X_I intersect X_J. Every nonzero tensor there factors as A_I tensor B_J tensor E_R, where R is the complement of I union J (E_R is a scalar if R is empty). Indeed first factor across I | I^c; the rank-one J | J^c flattening then factors the remaining tensor across J | R. Select i in I and j in J. The locus r_i>=3 is a nonempty open of C because x_I belongs to it; the locus r_j>=3 is also a nonempty open because x_J belongs to it. Irreducibility makes their intersection nonempty. At a tensor in that intersection the {i,j} | remaining flattening has rank r_i(A_I) r_j(B_J)=9, by the Kronecker-product formula, contradicting its rank at most three. This proves distinctness also for disjoint triples.
+
+Finally d=sum_(h=0)^1 tensor_(i=1)^k e_h has rank and asymptotic rank two. Every nontrivial bipartition has matrix rank two, so d lies outside every X_I. A component containing d is distinct from every C_I. This proves the stated lower bound.
+
+For arbitrary dimensions d_i>=2, reduce each d_i to min(d_i,3) by local projection, with the coordinate inclusion as section. Rank monotonicity and the section show that the projection maps the larger Y_a onto the smaller Y_a. If the larger Y_a has s irreducible components, their image closures in the smaller Y_a are irreducible closed sets covering it, so the smaller variety has at most s irreducible components. Therefore the lower bound persists under padding.
+
+In particular, for all k>=4 and all d_i>=3, the bound is binomial(k,3)+1. For k=4 and all d_i>=3 this gives five components, rather than mere reducibility. The result varies tensor order/format and does not contradict or settle fixed-format finiteness. It gives a lower bound, not a complete list of components.

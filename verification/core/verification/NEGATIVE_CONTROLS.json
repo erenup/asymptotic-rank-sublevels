@@ -1,0 +1,72 @@
+{
+  "check_certificate.py": [
+    {
+      "name": "removed_auxiliary_pole_cancellation",
+      "stderr": "FAIL: nonzero negative Laurent coefficient at (13, 26, 27, -2)\n"
+    },
+    {
+      "name": "changed_target_coefficient",
+      "stderr": "FAIL: target differs from P^3 plus paired CW18\n"
+    },
+    {
+      "name": "changed_border_scalar_cancellation",
+      "stderr": "FAIL: CW8 Laurent identity differs from its exact expansion\n"
+    },
+    {
+      "name": "noninjective_tight_labels",
+      "stderr": "FAIL: tight weights not injective as required\n"
+    }
+  ],
+  "check_exact_upper.py": [
+    {
+      "name": "wrong_cancellation",
+      "stderr": "FAIL: a negative Laurent coefficient survives CW8 cancellation\n"
+    },
+    {
+      "name": "missing_group_term",
+      "stderr": "FAIL: a negative Laurent coefficient survives CW8 cancellation\n"
+    },
+    {
+      "name": "wrong_fourier_scale",
+      "stderr": "FAIL: Walsh decomposition coefficient differs from the group tensor\n"
+    },
+    {
+      "name": "label_collision",
+      "stderr": "FAIL: tight labels are not injective\n"
+    },
+    {
+      "name": "wrong_marginal",
+      "stderr": "FAIL: CW18 marginal does not have the claimed probability mass\n"
+    }
+  ],
+  "check_geometry.py": [
+    {
+      "name": "non_scalar_centroid",
+      "stderr": "FAIL: appended-minor matrix must have rank 26\n"
+    },
+    {
+      "name": "wrong_p_coefficient",
+      "stderr": "FAIL: L tensor-cubed P != 2 cw2\n"
+    },
+    {
+      "name": "wrong_cw2_coefficient",
+      "stderr": "FAIL: L tensor-cubed P != 2 cw2\n"
+    },
+    {
+      "name": "singular_basis",
+      "stderr": "FAIL: basis change is singular\n"
+    },
+    {
+      "name": "outside_inside_x",
+      "stderr": "FAIL: outside witness must have D-flattening rank 2\n"
+    },
+    {
+      "name": "boolean_coefficient",
+      "stderr": "FAIL: tensor coefficient\n"
+    },
+    {
+      "name": "unknown_schema_field",
+      "stderr": "FAIL: witness fields\n"
+    }
+  ]
+}
